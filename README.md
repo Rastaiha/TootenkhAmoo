@@ -1,9 +1,9 @@
-# Rasta Article Frontend
+# TootnekhAmoo
 
 ## Installation
 
-- `git clone https://github.com/Rastaiha/article.git`
-- `cd article`
+- `git clone https://github.com/Rastaiha/TootnekhAmoo.git`
+- `cd TootnekhAmoo`
 - `yarn`
 - `yarn start`
 - visit http://localhost:3000/
