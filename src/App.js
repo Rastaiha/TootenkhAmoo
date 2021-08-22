@@ -8,6 +8,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-redux-multilingual';
 
+import MoreThanOneTabDialog from './components/Dialog/MoreThanOneTab';
 import Notifier from './components/Notifications/Notifications';
 import Root from './root';
 import MuiTheme from './Theme/MuiThemes/MuiTheme';
@@ -27,6 +28,12 @@ const App = ({ dir }) => {
     document.body.dir = dir;
   }, [dir]);
 
+  const [open, setOpen] = React.useState(false);
+  window.addEventListener('storage', () => {
+    setOpen(true);
+  }, false)
+  localStorage.setItem('OneTab', Math.random())
+
   return (
     <IntlProvider translations={translations}>
       {dir === 'rtl' ? (
@@ -44,6 +51,7 @@ const App = ({ dir }) => {
             </ThemeProvider>
           </>
         )}
+      <MoreThanOneTabDialog open={open} />
     </IntlProvider>
   );
 };
