@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Grid,
+} from '@material-ui/core';
 import { Layer, Stage, Star, Text, Image } from 'react-konva';
 import useImage from 'use-image';
 
@@ -46,40 +49,56 @@ const Index = () => {
     );
   };
 
+
+  const [image] = useImage(process.env.PUBLIC_URL + '/backgrounds/space.jpg');
+  const scaleY = window.innerHeight / image?.height;
+
   return (
-    <Stage width={window.innerWidth} height={window.innerHeight}>
-      <Layer >
-        <URLImage width={window.innerWidth} height={window.innerHeight} src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'} />
-        {/* <LionImage /> */}
-      </Layer>
-      <Layer>
-        {/* <Text text="Try to drag a star" /> */}
-        {stars.map((star) => (
-          <Star
-            key={star.id}
-            id={star.id}
-            x={star.x}
-            y={star.y}
-            numPoints={5}
-            innerRadius={20}
-            outerRadius={40}
-            fill="#89b717"
-            opacity={0.8}
-            draggable
-            rotation={star.rotation}
-            shadowColor="black"
-            shadowBlur={10}
-            shadowOpacity={0.6}
-            shadowOffsetX={star.isDragging ? 10 : 5}
-            shadowOffsetY={star.isDragging ? 10 : 5}
-            scaleX={star.isDragging ? 1.2 : 1}
-            scaleY={star.isDragging ? 1.2 : 1}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          />
-        ))}
-      </Layer>
-    </Stage >
+    <Grid container justify='center'>
+      <Stage width={Math.min(image?.width * scaleY, window.innerWidth)} height={window.innerHeight}>
+        <Layer
+          draggable
+          dragBoundFunc={(pos) => {
+            pos.y = 0;
+            if (window.innerWidth < image?.width * scaleY) {
+              if (pos.x > 0) pos.x = 0;
+              if (pos.x < window.innerWidth - image?.width * scaleY)
+                pos.x = window.innerWidth - image?.width * scaleY
+            } else {
+              pos.x = 0;
+            }
+            return pos;
+          }}
+        >
+          <URLImage scaleX={scaleY} scaleY={scaleY} src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'} />
+          {/* <Text text="Try to drag a star" /> */}
+          {stars.map((star) => (
+            <Star
+              key={star.id}
+              id={star.id}
+              x={star.x}
+              y={star.y}
+              numPoints={5}
+              innerRadius={20}
+              outerRadius={40}
+              fill="#89b717"
+              opacity={0.8}
+              draggable
+              rotation={star.rotation}
+              shadowColor="black"
+              shadowBlur={10}
+              shadowOpacity={0.6}
+              shadowOffsetX={star.isDragging ? 10 : 5}
+              shadowOffsetY={star.isDragging ? 10 : 5}
+              scaleX={star.isDragging ? 1.2 : 1}
+              scaleY={star.isDragging ? 1.2 : 1}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+            />
+          ))}
+        </Layer>
+      </Stage >
+    </Grid>
   );
 };
 
