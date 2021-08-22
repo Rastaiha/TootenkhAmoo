@@ -1,10 +1,11 @@
-import React from 'react';
 import {
   Grid,
 } from '@material-ui/core';
-import { Layer, Stage, Star, Text, Image } from 'react-konva';
+import React from 'react';
+import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import useImage from 'use-image';
 
+import MessageSeries from '../components/Dialog/MessageSeries';
 import URLImage from '../components/Konva/URLImage';
 
 function generateShapes() {
@@ -98,6 +99,7 @@ const Index = () => {
           ))}
         </Layer>
       </Stage >
+      <MessageSeries open={true} />
     </Grid>
   );
 };

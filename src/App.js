@@ -12,6 +12,7 @@ import MoreThanOneTabDialog from './components/Dialog/MoreThanOneTab';
 import Notifier from './components/Notifications/Notifications';
 import Root from './root';
 import MuiTheme from './Theme/MuiThemes/MuiTheme';
+import RTLMuiTheme from './Theme/MuiThemes/RTLMuiTheme';
 import translations from './translations';
 import jss from './utils/jssRTL';
 
@@ -28,17 +29,26 @@ const App = ({ dir }) => {
     document.body.dir = dir;
   }, [dir]);
 
+  // handle one active tab
   const [open, setOpen] = React.useState(false);
   window.addEventListener('storage', () => {
     setOpen(true);
   }, false)
   localStorage.setItem('OneTab', Math.random())
 
+  // handle refresh on resize
+  React.useEffect(() => {
+    function handleResize() {
+      window.location.reload()
+    }
+    window.addEventListener('resize', handleResize)
+  })
+
   return (
     <IntlProvider translations={translations}>
       {dir === 'rtl' ? (
         <>
-          <ThemeProvider theme={MuiTheme}>
+          <ThemeProvider theme={RTLMuiTheme}>
             <StylesProvider jss={jss}>
               <ArticleApp />
             </StylesProvider>
