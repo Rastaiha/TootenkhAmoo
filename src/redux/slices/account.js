@@ -23,48 +23,6 @@ export const loginAction = createAsyncThunkApi(
   }
 );
 
-export const registerAction = createAsyncThunkApi(
-  'users/register',
-  Apis.POST_FORM_DATA,
-  registerUrl,
-  {
-    defaultNotification: {
-      success:
-        'ایول! ثبت‌نامت با موفقیت انجام شد. یه پیامک برات میاد که جزئیات ثبت‌نامت توشه.',
-      error: 'ثبت‌نامت با مشکل روبه‌رو شده. یه چند لحظه دیگه دوباره تلاش کن!',
-    },
-  }
-);
-
-export const getVerificationCodeAction = createAsyncThunkApi(
-  'users/getVerificationCode',
-  Apis.POST,
-  getVerificationCodeUrl,
-  {
-    bodyCreator: ({ phone, codeType }) => ({ phone, code_type: codeType }),
-    defaultNotification: {
-      success: 'کد تایید فرستاده شد! این کد بعد از ۵ دقیقه منقضی میشه.',
-      error: 'یه مشکلی وجود داره. یه چند لحظه دیگه دوباره درخواست بده!',
-    },
-  }
-);
-
-export const changePasswordAction = createAsyncThunkApi(
-  'users/changePassword',
-  Apis.POST,
-  changePasswordUrl,
-  {
-    bodyCreator: ({ phone, password, verificationCode }) => ({
-      phone,
-      password,
-      verify_code: verificationCode,
-    }),
-    defaultNotification: {
-      success: 'حله! رمزت با موفقیت عوض شد.',
-      error: 'یه مشکلی وجود داره، رمزت تغییر نکرد!',
-    },
-  }
-);
 
 const isFetching = (state) => {
   state.isFetching = true;
@@ -82,19 +40,12 @@ const accountSlice = createSlice({
   },
   extraReducers: {
     [loginAction.pending.toString()]: isFetching,
-    [registerAction.pending.toString()]: isFetching,
-    [changePasswordAction.pending.toString()]: isFetching,
-
     [loginAction.fulfilled.toString()]: (state, { payload: { response } }) => {
       state.user = response.user_info;
       state.token = response.access;
       state.isFetching = false;
     },
     [loginAction.rejected.toString()]: isNotFetching,
-    [changePasswordAction.fulfilled.toString()]: isNotFetching,
-    [changePasswordAction.rejected.toString()]: isNotFetching,
-    [registerAction.fulfilled.toString()]: isNotFetching,
-    [registerAction.rejected.toString()]: isNotFetching,
   },
 });
 

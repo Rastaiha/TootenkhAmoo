@@ -87,7 +87,7 @@ const Index = () => {
 
           {objects.map((star) => (
             <URLImage
-              onClick={() => { console.log("@@@@"); goForward('/dsdsc') }}
+              onClick={() => goForward('/folan-folan')}
               src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'}
               width={100} height={100}
               key={star.id}

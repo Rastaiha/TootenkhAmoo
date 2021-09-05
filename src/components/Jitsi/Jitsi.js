@@ -38,7 +38,7 @@ function Jitsi({ handleClose, width, displayName = 'User' }) {
   const classes = useStyles();
   const jitsiElement = useRef();
 
-  // const { teamId } = useContext(StatePageContext);
+  // const { teamId } = useContext(StatePageContext); //todo: replace with team uuid
   const teamId = 3;
 
   const refresh = useCallback(() => {
