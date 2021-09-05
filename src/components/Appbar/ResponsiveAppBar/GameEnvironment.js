@@ -6,15 +6,18 @@ import { Link } from 'react-router-dom';
 import LogoButton from './components/LogoButton';
 import MenuButton from './components/MenuButton';
 import BackButton from './components/BackButton';
+import JitsiButton from './components/JitsiButton';
 
 const ArticleAppBarItems = () => {
   const t = useTranslate();
   const logoButton = <LogoButton />;
   const menuButton = <MenuButton />;
   const backButton = <BackButton />
+  const jitsiButton = <JitsiButton />
+
   return {
     desktopLeftItems: [backButton],
-    desktopRightItems: [menuButton],
+    desktopRightItems: [menuButton, jitsiButton],
     mobileLeftItems: [backButton],
     mobileRightItems: [menuButton],
     mobileMenuListItems: [],
