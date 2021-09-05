@@ -1,9 +1,10 @@
-import ArticleAppBarItems from './ArticleAppBarItems';
+import GameEnvironment from './GameEnvironment';
 import LandingAppBarItems from './LandingAppBarItems';
 
 const AppbarModes = {
-  LANDING: LandingAppBarItems,
-  ARTICLE: ArticleAppBarItems,
+
+  GAME_ENVIRONMENT: GameEnvironment,
+  ARTICLE: LandingAppBarItems,
 };
 
 export default AppbarModes;

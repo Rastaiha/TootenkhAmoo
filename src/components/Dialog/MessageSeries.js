@@ -7,9 +7,12 @@ import {
   ButtonGroup,
   Button,
   Grid,
+  Fade,
   Hidden,
+  Slide,
   makeStyles,
   Typography,
+  Zoom,
 } from '@material-ui/core';
 import React from 'react';
 
@@ -36,7 +39,7 @@ function Index({
 
   const classes = useStyles();
   return (
-    <Dialog maxWidth="xs" open={open} onClose={handleClose} PaperComponent='false'>
+    <Dialog maxWidth="xs" TransitionComponent={Slide} open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
           <img width='300px' alt='' src={process.env.PUBLIC_URL + '/logo.png'} />

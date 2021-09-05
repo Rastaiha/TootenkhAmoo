@@ -7,6 +7,7 @@ import useImage from 'use-image';
 
 import MessageSeries from '../components/Dialog/MessageSeries';
 import URLImage from '../components/Konva/URLImage';
+import Layout from './layout';
 
 function generateShapes() {
   return [...Array(10)].map((_, i) => ({
@@ -20,13 +21,9 @@ function generateShapes() {
 
 const INITIAL_STATE = generateShapes();
 
-const LionImage = () => {
-  const [image] = useImage('https://konvajs.org/assets/lion.png');
-  return <Image draggable image={image} />;
-};
-
 const Index = () => {
   const [stars, setStars] = React.useState(INITIAL_STATE);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   const handleDragStart = (e) => {
     const id = e.target.id();
@@ -39,6 +36,8 @@ const Index = () => {
       })
     );
   };
+
+
   const handleDragEnd = (e) => {
     setStars(
       stars.map((star) => {
@@ -50,12 +49,18 @@ const Index = () => {
     );
   };
 
+  const onClick = () => {
+    setDialogOpen(!dialogOpen)
+  }
+
+
+  console.log(dialogOpen)
 
   const [image] = useImage(process.env.PUBLIC_URL + '/backgrounds/space.jpg');
   const scaleY = window.innerHeight / image?.height;
 
   return (
-    <Grid container justify='center'>
+    <Layout>
       <Stage width={Math.min(image?.width * scaleY, window.innerWidth)} height={window.innerHeight}>
         <Layer
           draggable
@@ -72,7 +77,7 @@ const Index = () => {
           }}
         >
           <URLImage scaleX={scaleY} scaleY={scaleY} src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'} />
-          {/* <Text text="Try to drag a star" /> */}
+
           {stars.map((star) => (
             <Star
               key={star.id}
@@ -88,6 +93,9 @@ const Index = () => {
               rotation={star.rotation}
               shadowColor="black"
               shadowBlur={10}
+              onClick={onClick}
+              onMouseEnter={handleDragStart}
+              onMouseLeave={handleDragEnd}
               shadowOpacity={0.6}
               shadowOffsetX={star.isDragging ? 10 : 5}
               shadowOffsetY={star.isDragging ? 10 : 5}
@@ -99,8 +107,10 @@ const Index = () => {
           ))}
         </Layer>
       </Stage >
-      <MessageSeries open={true} />
-    </Grid>
+      <MessageSeries
+        handleClose={() => setDialogOpen(!dialogOpen)}
+        open={dialogOpen} />
+    </Layout>
   );
 };
 

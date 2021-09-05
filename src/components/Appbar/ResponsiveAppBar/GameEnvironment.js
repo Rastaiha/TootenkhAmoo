@@ -4,24 +4,19 @@ import { useTranslate } from 'react-redux-multilingual/lib/context';
 import { Link } from 'react-router-dom';
 
 import LogoButton from './components/LogoButton';
+import MenuButton from './components/MenuButton';
+import BackButton from './components/BackButton';
 
 const ArticleAppBarItems = () => {
   const t = useTranslate();
   const logoButton = <LogoButton />;
-  const BackButton = (
-    <Button
-      component={Link}
-      to="/physics_day"
-      variant="outlined"
-      color="primary">
-      {t('backToEvent')}
-    </Button>
-  );
+  const menuButton = <MenuButton />;
+  const backButton = <BackButton />
   return {
-    desktopLeftItems: [BackButton],
-    desktopRightItems: [logoButton],
-    mobileLeftItems: [logoButton],
-    mobileRightItems: [BackButton],
+    desktopLeftItems: [backButton],
+    desktopRightItems: [menuButton],
+    mobileLeftItems: [backButton],
+    mobileRightItems: [menuButton],
     mobileMenuListItems: [],
   };
 };

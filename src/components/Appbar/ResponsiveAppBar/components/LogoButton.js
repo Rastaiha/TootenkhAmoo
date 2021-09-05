@@ -15,13 +15,13 @@ export default function LogoButton({ size }) {
   return (
     <Tooltip title="رستا" arrow>
       <IconButton className={classes.logoButton}>
-      <a href="https://summerschool.rastaiha.ir/">
-        <img
-          src={process.env.PUBLIC_URL + '/logo.png'}
-          alt="logo"
-          className={classes.logo}
-        />
-      </a>
+        <a href="https://summerschool.rastaiha.ir/">
+          <img
+            src={process.env.PUBLIC_URL + '/logo.png'}
+            alt="logo"
+            className={classes.logo}
+          />
+        </a>
       </IconButton>
     </Tooltip>
   );

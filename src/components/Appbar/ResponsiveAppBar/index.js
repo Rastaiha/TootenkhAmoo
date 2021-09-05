@@ -12,16 +12,25 @@ import {
   useScrollTrigger,
   withWidth,
 } from '@material-ui/core';
-import { Menu as MenuIcon } from '@material-ui/icons';
+
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React, { useState } from 'react';
 
 import HideOnScroll from './components/HideOnScroll';
 import modes from './modes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
   },
   toolbarIcon: {
     display: 'flex',
@@ -34,32 +43,26 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     transition: '0.2s',
   },
-  menuButton: {
-    marginRight: 5,
-    color: theme.palette.primary.main,
-    display: 'none',
-    [theme.breakpoints.down('xs')]: {
-      display: 'flex',
-    },
-  },
+
   list: {
     width: 250,
   },
   hideBack: {
     background: 'transparent',
     boxShadow: 'none',
-    paddingTop: theme.spacing(4),
   },
 }));
 
+
+
 function ResponsiveAppBar({
-  mode = 'LANDING',
+  mode = 'GAME_ENVIRONMENT',
   showBackOnScroll = false,
   hideOnScroll = false,
   width,
 }) {
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 30 });
 
   const {
@@ -76,56 +79,15 @@ function ResponsiveAppBar({
   return (
     <>
       <HideOnScroll disable={!hideOnScroll}>
-        <AppBar
-          id="appBar"
-          className={clsx(
-            classes.appBar,
-            showBackOnScroll && !trigger && classes.hideBack
-          )}
-          color="inherit">
-          <Container>
-            <Toolbar className={classes.toolbar} disableGutters>
-              {mobileMenuListItems.length > 0 && (
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  className={classes.menuButton}
-                  onClick={() => setDrawerOpen(true)}>
-                  <MenuIcon />
-                </IconButton>
-              )}
-              <Grid container justify="space-between">
-                <Grid item>
-                  <Grid
-                    spacing={1}
-                    container
-                    justify="flex-start"
-                    alignItems="center">
-                    {rightItems.map((item, index) => (
-                      <Grid key={index} item>
-                        {item}
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-                <Grid item>
-                  <Grid
-                    spacing={1}
-                    container
-                    justify="flex-end"
-                    alignItems="center">
-                    {leftItems.map((item, index) => (
-                      <Grid key={index} item>
-                        {item}
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-              </Grid>
+        <div className={classes.root}>
+          <AppBar className={`${classes.appBar} ${classes.hideBack}`} position="fixed">
+            <Toolbar>
+              {rightItems.map((item, index) => { return (<>{item}</>) })}
+              <div className={classes.title} />
+              {leftItems.map((item, index) => { return (<>{item}</>) })}
             </Toolbar>
-          </Container>
-        </AppBar>
+          </AppBar>
+        </div>
       </HideOnScroll>
       {mobileMenuListItems.length > 0 && (
         <Hidden smUp>
