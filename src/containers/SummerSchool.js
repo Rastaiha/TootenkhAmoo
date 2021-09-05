@@ -4,31 +4,40 @@ import {
 import React from 'react';
 import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import useImage from 'use-image';
+import { useHistory } from "react-router-dom";
 
 import MessageSeries from '../components/Dialog/MessageSeries';
 import URLImage from '../components/Konva/URLImage';
 import Layout from './layout';
 
-function generateShapes() {
-  return [...Array(10)].map((_, i) => ({
-    id: i.toString(),
+
+
+const OBJECTS = [
+  {
+    id: 0,
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
     rotation: Math.random() * 180,
     isDragging: false,
-  }));
-}
-
-const INITIAL_STATE = generateShapes();
+  },
+  {
+    id: 1,
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    rotation: Math.random() * 180,
+    isDragging: false,
+  },
+]
 
 const Index = () => {
-  const [stars, setStars] = React.useState(INITIAL_STATE);
+  const [objects, setObjects] = React.useState(OBJECTS);
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  let history = useHistory();
 
   const handleDragStart = (e) => {
     const id = e.target.id();
-    setStars(
-      stars.map((star) => {
+    setObjects(
+      objects.map((star) => {
         return {
           ...star,
           isDragging: star.id === id,
@@ -37,10 +46,9 @@ const Index = () => {
     );
   };
 
-
   const handleDragEnd = (e) => {
-    setStars(
-      stars.map((star) => {
+    setObjects(
+      objects.map((star) => {
         return {
           ...star,
           isDragging: false,
@@ -49,12 +57,9 @@ const Index = () => {
     );
   };
 
-  const onClick = () => {
-    setDialogOpen(!dialogOpen)
+  const goForward = (dst) => {
+    history.push(dst);
   }
-
-
-  console.log(dialogOpen)
 
   const [image] = useImage(process.env.PUBLIC_URL + '/backgrounds/space.jpg');
   const scaleY = window.innerHeight / image?.height;
@@ -78,8 +83,13 @@ const Index = () => {
         >
           <URLImage scaleX={scaleY} scaleY={scaleY} src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'} />
 
-          {stars.map((star) => (
-            <Star
+
+
+          {objects.map((star) => (
+            <URLImage
+              onClick={() => { console.log("@@@@"); goForward('/dsdsc') }}
+              src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'}
+              width={100} height={100}
               key={star.id}
               id={star.id}
               x={star.x}
@@ -93,7 +103,7 @@ const Index = () => {
               rotation={star.rotation}
               shadowColor="black"
               shadowBlur={10}
-              onClick={onClick}
+              // onClick={onClick}
               onMouseEnter={handleDragStart}
               onMouseLeave={handleDragEnd}
               shadowOpacity={0.6}
