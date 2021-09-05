@@ -1,6 +1,6 @@
 import './Theme/Styles/App.css';
 
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, LinearProgress } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { SnackbarProvider } from 'notistack';
@@ -24,7 +24,10 @@ const ArticleApp = () => (
   </SnackbarProvider>
 );
 
-const App = ({ dir }) => {
+const App = ({
+  dir,
+  isFetching,
+}) => {
   useEffect(() => {
     document.body.dir = dir;
   }, [dir]);
@@ -44,22 +47,33 @@ const App = ({ dir }) => {
     window.addEventListener('resize', handleResize)
   })
 
+  const Loading = () => {
+    if (isFetching) {
+      return (
+        <div style={{ width: '100%', position: 'fixed', top: '0px', zIndex: '1000', }}>
+          <LinearProgress />
+        </div>
+      );
+    } else {
+      return <></>;
+    }
+  };
+
+
   return (
     <IntlProvider translations={translations}>
       {dir === 'rtl' ? (
-        <>
-          <ThemeProvider theme={RTLMuiTheme}>
-            <StylesProvider jss={jss}>
-              <ArticleApp />
-            </StylesProvider>
-          </ThemeProvider>
-        </>
+        <ThemeProvider theme={RTLMuiTheme}>
+          <Loading />
+          <StylesProvider jss={jss}>
+            <ArticleApp />
+          </StylesProvider>
+        </ThemeProvider>
       ) : (
-          <>
-            <ThemeProvider theme={MuiTheme}>
-              <ArticleApp />
-            </ThemeProvider>
-          </>
+          <ThemeProvider theme={MuiTheme}>
+            <Loading />
+            <ArticleApp />
+          </ThemeProvider>
         )}
       <MoreThanOneTabDialog open={open} />
     </IntlProvider>
@@ -68,6 +82,7 @@ const App = ({ dir }) => {
 
 const mapStateToProps = (state) => ({
   dir: state.Intl.locale === 'fa' ? 'rtl' : 'ltr',
+  isFetching: state.account.isFetching,
 });
 
 export default connect(mapStateToProps)(App);
