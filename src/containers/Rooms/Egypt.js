@@ -7,9 +7,9 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from "react-router-dom";
 import useImage from 'use-image';
 
-import MessageSeries from '../components/Dialog/MessageSeries';
-import URLImage from '../components/Konva/URLImage';
-import Layout from './layout';
+import MessageSeries from '../../components/Dialog/MessageSeries';
+import URLImage from '../../components/Konva/URLImage';
+import Layout from '../layout';
 
 
 const useStyles = makeStyles(() => ({
@@ -28,20 +28,24 @@ const Index = () => {
   const [objects, setObjects] = React.useState(
     [
       {
+        urlImage: process.env.PUBLIC_URL + '/egypt/hashem.png',
         id: 0,
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        rotation: Math.random() * 180,
-        isDragging: false,
-        onClick: () => goForward('/greece'),
+        x: 100,
+        y: 200,
+        width: 100,
+        height: 200,
+        isHover: false,
+        onClick: () => goForward('/folan1'),
       },
       {
+        urlImage: process.env.PUBLIC_URL + '/egypt/hashem.png',
         id: 1,
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        rotation: Math.random() * 180,
-        isDragging: false,
-        onClick: () => goForward('/greece'),
+        x: 200,
+        y: 200,
+        width: 100,
+        height: 200,
+        isHover: false,
+        onClick: () => goForward('/folan1'),
       },
     ]
   );
@@ -50,24 +54,24 @@ const Index = () => {
     history.push(dst);
   }
 
-  const handleDragStart = (e) => {
+  const handleMouseEnter = (e) => {
     const id = e.target.id();
     setObjects(
       objects.map((star) => {
         return {
           ...star,
-          isDragging: star.id === id,
+          isHover: star.id === id,
         };
       })
     );
   };
 
-  const handleDragEnd = (e) => {
+  const handleMouseExit = (e) => {
     setObjects(
       objects.map((star) => {
         return {
           ...star,
-          isDragging: false,
+          isHover: false,
         };
       })
     );
@@ -90,37 +94,33 @@ const Index = () => {
             return pos;
           }}
         >
-          {/* <URLImage scaleX={scaleY} scaleY={scaleY} src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'} /> */}
+          <URLImage scaleX={scaleY} scaleY={scaleY} src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'} />
 
           {objects.map((object) => (
             <URLImage
               onClick={object.onClick}
-              src={process.env.PUBLIC_URL + '/backgrounds/space.jpg'}
-              width={200}
-              height={100}
+              src={object.urlImage}
+              width={object.width}
+              height={object.height}
               key={object.id}
               id={object.id}
-              x={object.x + 100}
+              x={object.x}
               y={object.y}
-              numPoints={5}
               innerRadius={20}
               outerRadius={40}
-              fill="#89b717"
               opacity={0.8}
-              draggable
               rotation={object.rotation}
               shadowColor="black"
               shadowBlur={10}
-              // onClick={onClick}
-              onMouseEnter={handleDragStart}
-              onMouseLeave={handleDragEnd}
+
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseExit}
               shadowOpacity={0.6}
-              shadowOffsetX={object.isDragging ? 10 : 5}
-              shadowOffsetY={object.isDragging ? 10 : 5}
-              scaleX={object.isDragging ? 1.2 : 1}
-              scaleY={object.isDragging ? 1.2 : 1}
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
+              shadowOffsetX={object.isHover ? 10 : 5}
+              shadowOffsetY={object.isHover ? 10 : 5}
+              scaleX={object.isHover ? 1.2 : 1}
+              scaleY={object.isHover ? 1.2 : 1}
+
             />
           ))}
         </Layer>
