@@ -3,11 +3,13 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Login from '../containers/Login';
 import ProblemView from '../containers/Player/ProblemView';
+import Greece from '../containers/Rooms/Greece';
 import SummerSchoolLanding from '../containers/SummerSchool';
 
 const Root = () => {
   return (
     <Switch>
+      <Route path="/Greece/" component={Greece} />
       <Route path="/login/" component={Login} />
       <Route path="/problem/:problemId/" component={ProblemView} />
       <Route path="/" component={SummerSchoolLanding} />

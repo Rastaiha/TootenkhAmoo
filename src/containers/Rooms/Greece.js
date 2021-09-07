@@ -7,9 +7,9 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from "react-router-dom";
 import useImage from 'use-image';
 
-import MessageSeries from '../components/Dialog/MessageSeries';
-import URLImage from '../components/Konva/URLImage';
-import Layout from './layout';
+import MessageSeries from '../../components/Dialog/MessageSeries';
+import URLImage from '../../components/Konva/URLImage';
+import Layout from '../layout';
 
 
 const useStyles = makeStyles(() => ({
@@ -33,7 +33,7 @@ const Index = () => {
         y: Math.random() * window.innerHeight,
         rotation: Math.random() * 180,
         isDragging: false,
-        onClick: () => goForward('/greece'),
+        onClick: () => goForward('/folan1'),
       },
       {
         id: 1,
@@ -41,7 +41,23 @@ const Index = () => {
         y: Math.random() * window.innerHeight,
         rotation: Math.random() * 180,
         isDragging: false,
-        onClick: () => goForward('/greece'),
+        onClick: () => goForward('/folan2'),
+      },
+      {
+        id: 2,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        rotation: Math.random() * 180,
+        isDragging: false,
+        onClick: () => goForward('/folan3'),
+      },
+      {
+        id: 3,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        rotation: Math.random() * 180,
+        isDragging: false,
+        onClick: () => goForward('/folan4'),
       },
     ]
   );
