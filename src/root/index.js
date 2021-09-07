@@ -9,7 +9,7 @@ import SummerSchoolLanding from '../containers/SummerSchool';
 const Root = () => {
   return (
     <Switch>
-      <Route path="/Greece/" component={Greece} />
+      <Route path="/greece/" component={Greece} />
       <Route path="/login/" component={Login} />
       <Route path="/problem/:problemId/" component={ProblemView} />
       <Route path="/" component={SummerSchoolLanding} />
