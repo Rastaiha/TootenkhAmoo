@@ -1,12 +1,28 @@
 import React from 'react';
-import URLImage from '../../components/Konva/URLImage';
+import { Image } from 'react-konva';
+import useImage from 'use-image';
 
+const Index = ({
+  object,
+  scale,
+  handleMouseEnter,
+  handleMouseExit
+}) => {
+  const [image] = useImage(object.urlImage);
 
-const Index = ({ object, scale, handleMouseEnter, handleMouseExit }) => {
+  if (!image) {
+    return (<></>)
+  }
+
+  console.log(image.height);
+  console.log(image.width);
+
   return (
-    <URLImage
+    <Image
+      image={image}
+      offsetX={image.width / 2}
+      offsetY={image.height / 2}
       onClick={object.onClick}
-      src={object.urlImage}
       key={object.id}
       id={object.id}
       x={object.x * scale}

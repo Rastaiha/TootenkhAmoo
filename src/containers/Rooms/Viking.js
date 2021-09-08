@@ -23,7 +23,7 @@ const Index = () => {
   let history = useHistory()
   const classes = useStyles();
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const BACKGROUND_IMAGE = '/viking/viking room - empty.png';
+  const BACKGROUND_IMAGE = '/viking/empty-room.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState(
@@ -31,20 +31,16 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/viking/ax.png',
         id: 0,
-        x: 1035,
-        y: 170,
-        width: 300,
-        height: 100,
+        x: 1220,
+        y: 280,
         isHover: false,
-        onClick: () => goForward('/folan1'),
+        onClick: () => goForward('/problem/1'),
       },
       {
         urlImage: process.env.PUBLIC_URL + '/viking/horn.png',
         id: 1,
         x: 240,
         y: 470,
-        width: 190,
-        height: 90,
         isHover: false,
         onClick: () => goForward('/folan1'),
       },
@@ -53,8 +49,6 @@ const Index = () => {
         id: 2,
         x: 855,
         y: 400,
-        width: 150,
-        height: 150,
         isHover: false,
         onClick: () => goForward('/folan1'),
       },
@@ -63,8 +57,6 @@ const Index = () => {
         id: 3,
         x: 550,
         y: 430,
-        width: 180,
-        height: 200,
         isHover: false,
         onClick: () => goForward('/folan1'),
       }
@@ -99,7 +91,7 @@ const Index = () => {
   };
 
   return (
-    <Layout>
+    <Layout backgroundImage={BACKGROUND_IMAGE}>
       <Stage
         width={Math.min(image?.width * scaleY, window.innerWidth)}
         height={window.innerHeight}>
@@ -120,6 +112,7 @@ const Index = () => {
             scaleX={scaleY}
             scaleY={scaleY}
             src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
+
           {objects.map((object) => (
             <ItemImage
               key={object.id}
@@ -128,6 +121,7 @@ const Index = () => {
               handleMouseEnter={handleMouseEnter}
               handleMouseExit={handleMouseExit} />
           ))}
+
         </Layer>
       </Stage>
       <MessageSeries

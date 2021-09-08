@@ -33,8 +33,6 @@ const Index = () => {
         id: 0,
         x: 1005,
         y: 370,
-        width: 100,
-        height: 200,
         isHover: false,
         onClick: () => goForward('/folan1'),
       },
@@ -43,8 +41,6 @@ const Index = () => {
         id: 1,
         x: 300,
         y: 520,
-        width: 200,
-        height: 300,
         isHover: false,
         onClick: () => goForward('/folan1'),
       },
@@ -53,8 +49,6 @@ const Index = () => {
         id: 2,
         x: 1250,
         y: 100,
-        width: 150,
-        height: 600,
         isHover: false,
         onClick: () => goForward('/folan1'),
       },
@@ -63,8 +57,6 @@ const Index = () => {
         id: 3,
         x: 685,
         y: 570,
-        width: 170,
-        height: 50,
         isHover: false,
         onClick: () => goForward('/folan1'),
       }
@@ -115,18 +107,19 @@ const Index = () => {
             return pos;
           }}
         >
-            <URLImage
-                scaleX={scaleY}
-                scaleY={scaleY}
-                src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
-            {objects.map((object) => (
-                <ItemImage
-                    key={object.id}
-                    object={object}
-                    scale={scaleY}
-                    handleMouseEnter={handleMouseEnter}
-                    handleMouseExit={handleMouseExit} />
-            ))}
+          <URLImage
+            scaleX={scaleY}
+            scaleY={scaleY}
+            src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
+
+          {objects.map((object) => (
+            <ItemImage
+              key={object.id}
+              object={object}
+              scale={scaleY}
+              handleMouseEnter={handleMouseEnter}
+              handleMouseExit={handleMouseExit} />
+          ))}
         </Layer>
       </Stage >
       <MessageSeries
