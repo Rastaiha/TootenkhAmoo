@@ -14,33 +14,30 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto !important',
     marginLeft: 'auto !important',
   },
-  background: {
+  background: ({ backgroundImage }) => ({
     transform: 'scale(1.1)',
     height: '100vh',
     width: '100%',
     position: 'fixed',
     top: '0',
     left: '0',
-    background: `url(${process.env.PUBLIC_URL + '/backgrounds/space.jpg'}) no-repeat center center fixed`,
+    background: `url(${process.env.PUBLIC_URL + backgroundImage}) no-repeat center center fixed`,
     opacity: '0.5',
     backgroundSize: 'cover',
     zIndex: '-1',
     animation: 'show-back 0.8s 0.3s both',
     filter: 'blur(3px)',
-  },
+  }),
 }));
 
 const Layout = ({
-  getUserProfile,
-  addNotification,
-  userProfile,
-  userAccount,
+  backgroundImage,
   ...props
 }) => {
-  const classes = useStyles();
+
+  console.log(backgroundImage)
+  const classes = useStyles({ backgroundImage });
   const history = useHistory();
-
-
 
   // useEffect(() => {
   //   if (
