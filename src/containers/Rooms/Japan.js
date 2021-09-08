@@ -23,15 +23,16 @@ const Index = () => {
     let history = useHistory()
     const classes = useStyles();
     const [dialogOpen, setDialogOpen] = React.useState(false);
-    const [image] = useImage(process.env.PUBLIC_URL + '/japan/japan room - empty.png');
+    const BACKGROUND_IMAGE = '/japan/japan room - empty.png';
+    const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
     const scaleY = window.innerHeight / image?.height;
     const [objects, setObjects] = React.useState(
         [
             {
                 urlImage: process.env.PUBLIC_URL + '/japan/sushi.png',
                 id: 0,
-                x: 620,
-                y: 425,
+                x: 880,
+                y: 595,
                 width: 180,
                 height: 60,
                 isHover: false,
@@ -40,8 +41,8 @@ const Index = () => {
             {
                 urlImage: process.env.PUBLIC_URL + '/japan/chance cat.png',
                 id: 1,
-                x: 230,
-                y: 315,
+                x: 320,
+                y: 445,
                 width: 100,
                 height: 150,
                 isHover: false,
@@ -50,8 +51,8 @@ const Index = () => {
             {
                 urlImage: process.env.PUBLIC_URL + '/japan/cherry blossom vase.png',
                 id: 3,
-                x: 410,
-                y: 170,
+                x: 575,
+                y: 230,
                 width: 200,
                 height: 300,
                 isHover: false,
@@ -60,8 +61,8 @@ const Index = () => {
             ,{
             urlImage: process.env.PUBLIC_URL + '/japan/dragon.png',
             id: 4,
-            x: 90,
-            y: 40,
+            x: 125,
+            y: 60,
             width: 170,
             height: 250,
             isHover: false,
@@ -70,8 +71,8 @@ const Index = () => {
             ,{
             urlImage: process.env.PUBLIC_URL + '/japan/katana.png',
             id: 5,
-            x: 70,
-            y: 320,
+            x: 105,
+            y: 445,
             width: 50,
             height: 350,
             isHover: false,
@@ -125,7 +126,7 @@ const Index = () => {
                     }}
                 >
                     <URLImage scaleX={scaleY} scaleY={scaleY}
-                              src={process.env.PUBLIC_URL + '/japan/japan room - empty.png'}/>
+                              src={process.env.PUBLIC_URL + BACKGROUND_IMAGE}/>
 
                     {objects.map((object) => (
                         <URLImage
@@ -135,8 +136,8 @@ const Index = () => {
                             height={object.height}
                             key={object.id}
                             id={object.id}
-                            x={object.x}
-                            y={object.y}
+                            x={object.x * scaleY}
+                            y={object.y * scaleY}
                             innerRadius={300}
                             outerRadius={40}
                             opacity={1}

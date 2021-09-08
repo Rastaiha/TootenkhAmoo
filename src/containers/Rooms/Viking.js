@@ -23,15 +23,16 @@ const Index = () => {
   let history = useHistory()
   const classes = useStyles();
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [image] = useImage(process.env.PUBLIC_URL + '/viking/viking room - empty.png');
+  const BACKGROUND_IMAGE = '/viking/viking room - empty.png';
+  const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState(
     [
       {
         urlImage: process.env.PUBLIC_URL + '/viking/ax.png',
         id: 0,
-        x: 1020,
-        y: 180,
+        x: 1035,
+        y: 170,
         width: 300,
         height: 100,
         isHover: false,
@@ -40,8 +41,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/viking/horn.png',
         id: 1,
-        x: 175,
-        y: 340,
+        x: 240,
+        y: 470,
         width: 190,
         height: 90,
         isHover: false,
@@ -50,8 +51,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/viking/hat.png',
         id: 2,
-        x: 620,
-        y: 300,
+        x: 855,
+        y: 400,
         width: 150,
         height: 150,
         isHover: false,
@@ -60,8 +61,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/viking/ship.png',
         id: 3,
-        x: 395,
-        y: 270,
+        x: 550,
+        y: 430,
         width: 180,
         height: 200,
         isHover: false,
@@ -115,7 +116,7 @@ const Index = () => {
           }}
         >
           <URLImage scaleX={scaleY} scaleY={scaleY}
-            src={process.env.PUBLIC_URL + '/viking/viking room - empty.png'} />
+            src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
 
           {objects.map((object) => (
             <URLImage

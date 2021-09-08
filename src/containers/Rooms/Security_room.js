@@ -23,15 +23,16 @@ const Index = () => {
     let history = useHistory()
     const classes = useStyles();
     const [dialogOpen, setDialogOpen] = React.useState(false);
-    const [image] = useImage(process.env.PUBLIC_URL + '/security_room/security-empty.png');
+    const BACKGROUND_IMAGE = '/security_room/security-empty.png';
+    const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
     const scaleY = window.innerHeight / image?.height;
     const [objects, setObjects] = React.useState(
         [
             {
                 urlImage: process.env.PUBLIC_URL + '/security_room/satl.png',
                 id: 0,
-                x: 240,
-                y: 565,
+                x: 535,
+                y: 1340,
                 width: 60,
                 height: 80,
                 isHover: false,
@@ -40,10 +41,10 @@ const Index = () => {
             {
                 urlImage: process.env.PUBLIC_URL + '/security_room/komod.png',
                 id: 1,
-                x: 875,
-                y: 215,
+                x: 2050,
+                y: 500,
                 width: 160,
-                height: 155,
+                height: 165,
                 isHover: false,
                 onClick: () => goForward('/folan1'),
             }
@@ -95,7 +96,7 @@ const Index = () => {
                     }}
                 >
                     <URLImage scaleX={scaleY} scaleY={scaleY}
-                              src={process.env.PUBLIC_URL + '/security_room/security-empty.png'}/>
+                              src={process.env.PUBLIC_URL + BACKGROUND_IMAGE}/>
 
                     {objects.map((object) => (
                         <URLImage
@@ -105,8 +106,8 @@ const Index = () => {
                             height={object.height}
                             key={object.id}
                             id={object.id}
-                            x={object.x}
-                            y={object.y}
+                            x={object.x * scaleY}
+                            y={object.y * scaleY}
                             innerRadius={300}
                             outerRadius={40}
                             opacity={1}

@@ -31,8 +31,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/egypt/cat.png',
         id: 0,
-        x: 465 * window.innerWidth / 1000,
-        y: 360 * window.innerHeight / 1000,
+        x: 1005,
+        y: 370,
         width: 100,
         height: 200,
         isHover: false,
@@ -41,8 +41,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/egypt/harp.png',
         id: 1,
-        x: 240,
-        y: 370,
+        x: 300,
+        y: 520,
         width: 200,
         height: 300,
         isHover: false,
@@ -51,8 +51,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/egypt/pharaoh.png',
         id: 2,
-        x: 900,
-        y: 60,
+        x: 1250,
+        y: 100,
         width: 150,
         height: 600,
         isHover: false,
@@ -61,8 +61,8 @@ const Index = () => {
       {
         urlImage: process.env.PUBLIC_URL + '/egypt/pyramids.png',
         id: 3,
-        x: 490,
-        y: 410,
+        x: 685,
+        y: 570,
         width: 170,
         height: 50,
         isHover: false,
@@ -125,8 +125,8 @@ const Index = () => {
               height={object.height}
               key={object.id}
               id={object.id}
-              x={object.x}
-              y={object.y}
+              x={object.x * scaleY}
+              y={object.y * scaleY}
               innerRadius={300}
               outerRadius={40}
               opacity={1}
