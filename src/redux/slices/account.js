@@ -3,10 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Apis } from '../apis';
 import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
-  changePasswordUrl,
-  getVerificationCodeUrl,
   loginUrl,
-  registerUrl,
 } from '../constants/urls';
 
 const initialState = { token: null, user: {} };
@@ -22,7 +19,6 @@ export const loginAction = createAsyncThunkApi(
     },
   }
 );
-
 
 const isFetching = (state) => {
   state.isFetching = true;

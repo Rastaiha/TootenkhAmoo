@@ -10,7 +10,7 @@ import useImage from 'use-image';
 import MessageSeries from '../../components/Dialog/MessageSeries';
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../layout';
-
+import ItemImage from './ItemImage';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -100,7 +100,9 @@ const Index = () => {
 
   return (
     <Layout>
-      <Stage width={Math.min(image?.width * scaleY, window.innerWidth)} height={window.innerHeight}>
+      <Stage
+        width={Math.min(image?.width * scaleY, window.innerWidth)}
+        height={window.innerHeight}>
         <Layer
           draggable
           dragBoundFunc={(pos) => {
@@ -113,34 +115,18 @@ const Index = () => {
               pos.x = 0;
             }
             return pos;
-          }}
-        >
-          <URLImage scaleX={scaleY} scaleY={scaleY}
+          }}>
+          <URLImage
+            scaleX={scaleY}
+            scaleY={scaleY}
             src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
-
           {objects.map((object) => (
-            <URLImage
-              onClick={object.onClick}
-              src={object.urlImage}
+            <ItemImage
               key={object.id}
-              id={object.id}
-              x={object.x * scaleY}
-              y={object.y * scaleY}
-              opacity={1}
-              rotation={object.rotation}
-              shadowColor="black"
-              shadowBlur={10}
-
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseExit}
-              shadowOpacity={0.6}
-              shadowOffsetX={object.isHover ? 10 : 5}
-              shadowOffsetY={object.isHover ? 10 : 5}
-
-              scaleX={object.isHover ? scaleY + 0.05 : scaleY}
-              scaleY={object.isHover ? scaleY + 0.05 : scaleY}
-
-            />
+              object={object}
+              scale={scaleY}
+              handleMouseEnter={handleMouseEnter}
+              handleMouseExit={handleMouseExit} />
           ))}
         </Layer>
       </Stage>
