@@ -10,7 +10,7 @@ import useImage from 'use-image';
 import MessageSeries from '../../components/Dialog/MessageSeries';
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../layout';
-
+import ItemImage from './ItemImage';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -115,35 +115,18 @@ const Index = () => {
             return pos;
           }}
         >
-          <URLImage scaleX={scaleY} scaleY={scaleY} src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
-
-          {objects.map((object) => (
             <URLImage
-              onClick={object.onClick}
-              src={object.urlImage}
-              width={object.width}
-              height={object.height}
-              key={object.id}
-              id={object.id}
-              x={object.x * scaleY}
-              y={object.y * scaleY}
-              innerRadius={300}
-              outerRadius={40}
-              opacity={1}
-              rotation={object.rotation}
-              shadowColor="black"
-              shadowBlur={10}
-
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseExit}
-              shadowOpacity={0.6}
-              shadowOffsetX={object.isHover ? 10 : 5}
-              shadowOffsetY={object.isHover ? 10 : 5}
-              scaleX={object.isHover ? 1.07 : 1}
-              scaleY={object.isHover ? 1.07 : 1}
-
-            />
-          ))}
+                scaleX={scaleY}
+                scaleY={scaleY}
+                src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
+            {objects.map((object) => (
+                <ItemImage
+                    key={object.id}
+                    object={object}
+                    scale={scaleY}
+                    handleMouseEnter={handleMouseEnter}
+                    handleMouseExit={handleMouseExit} />
+            ))}
         </Layer>
       </Stage >
       <MessageSeries

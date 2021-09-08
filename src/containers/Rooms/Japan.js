@@ -10,7 +10,7 @@ import useImage from 'use-image';
 import MessageSeries from '../../components/Dialog/MessageSeries';
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../layout';
-
+import ItemImage from './ItemImage';
 
 const useStyles = makeStyles(() => ({
     fullHeight: {
@@ -32,29 +32,23 @@ const Index = () => {
                 urlImage: process.env.PUBLIC_URL + '/japan/sushi.png',
                 id: 0,
                 x: 880,
-                y: 595,
-                width: 180,
-                height: 60,
+                y: 585,
                 isHover: false,
                 onClick: () => goForward('/folan1'),
             },
             {
                 urlImage: process.env.PUBLIC_URL + '/japan/chance cat.png',
                 id: 1,
-                x: 320,
+                x: 315,
                 y: 445,
-                width: 100,
-                height: 150,
                 isHover: false,
                 onClick: () => goForward('/folan1'),
             },
             {
                 urlImage: process.env.PUBLIC_URL + '/japan/cherry blossom vase.png',
                 id: 3,
-                x: 575,
-                y: 230,
-                width: 200,
-                height: 300,
+                x: 560,
+                y: 270,
                 isHover: false,
                 onClick: () => goForward('/folan1'),
             }
@@ -62,19 +56,15 @@ const Index = () => {
             urlImage: process.env.PUBLIC_URL + '/japan/dragon.png',
             id: 4,
             x: 125,
-            y: 60,
-            width: 170,
-            height: 250,
+            y: 50,
             isHover: false,
             onClick: () => goForward('/folan1'),
         }
             ,{
             urlImage: process.env.PUBLIC_URL + '/japan/katana.png',
             id: 5,
-            x: 105,
-            y: 445,
-            width: 50,
-            height: 350,
+            x: 75,
+            y: 440,
             isHover: false,
             onClick: () => goForward('/folan1'),
         }
@@ -125,35 +115,17 @@ const Index = () => {
                         return pos;
                     }}
                 >
-                    <URLImage scaleX={scaleY} scaleY={scaleY}
-                              src={process.env.PUBLIC_URL + BACKGROUND_IMAGE}/>
-
+                    <URLImage
+                        scaleX={scaleY}
+                        scaleY={scaleY}
+                        src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
                     {objects.map((object) => (
-                        <URLImage
-                            onClick={object.onClick}
-                            src={object.urlImage}
-                            width={object.width}
-                            height={object.height}
+                        <ItemImage
                             key={object.id}
-                            id={object.id}
-                            x={object.x * scaleY}
-                            y={object.y * scaleY}
-                            innerRadius={300}
-                            outerRadius={40}
-                            opacity={1}
-                            rotation={object.rotation}
-                            shadowColor="black"
-                            shadowBlur={10}
-
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseExit}
-                            shadowOpacity={0.6}
-                            shadowOffsetX={object.isHover ? 10 : 5}
-                            shadowOffsetY={object.isHover ? 10 : 5}
-                            scaleX={object.isHover ? 1.07 : 1}
-                            scaleY={object.isHover ? 1.07 : 1}
-
-                        />
+                            object={object}
+                            scale={scaleY}
+                            handleMouseEnter={handleMouseEnter}
+                            handleMouseExit={handleMouseExit} />
                     ))}
                 </Layer>
             </Stage>

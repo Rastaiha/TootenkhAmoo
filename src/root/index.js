@@ -6,6 +6,7 @@ import ProblemView from '../containers/Player/ProblemView';
 import Egypt from '../containers/Rooms/Egypt';
 import Greece from '../containers/Rooms/Greece';
 import Japan from '../containers/Rooms/Japan';
+import Iran from '../containers/Rooms/Iran';
 import Security_room from '../containers/Rooms/Security_room';
 import Viking from '../containers/Rooms/Viking';
 import SummerSchoolLanding from '../containers/SummerSchool';
@@ -15,6 +16,7 @@ const Root = () => {
   return (
     <Switch>
       <Route path="/greece/" component={Greece} />
+        <Route path="/iran/" component={Iran} />
       <Route path="/egypt/" component={Egypt} />
       <Route path="/japan/" component={Japan} />
       <Route path="/viking/" component={Viking} />
