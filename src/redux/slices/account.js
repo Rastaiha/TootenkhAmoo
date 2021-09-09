@@ -4,18 +4,30 @@ import { Apis } from '../apis';
 import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
   loginUrl,
+  getPlayerUrl,
 } from '../constants/urls';
 
 const initialState = { token: null, user: {} };
 
 export const loginAction = createAsyncThunkApi(
-  'users/login',
+  'users/loginAction',
   Apis.POST,
   loginUrl,
   {
     defaultNotification: {
       success: 'دوباره سلام!',
       error: 'نام کاربری یا رمز عبورت اشتباهه!',
+    },
+  }
+);
+
+export const getPlayerAction = createAsyncThunkApi(
+  'users/getPlayerAction',
+  Apis.GET,
+  getPlayerUrl,
+  {
+    defaultNotification: {
+      error: 'مشکلی در دریافت مشخصات بازیکن وجود داشت.',
     },
   }
 );
@@ -42,6 +54,16 @@ const accountSlice = createSlice({
       state.isFetching = false;
     },
     [loginAction.rejected.toString()]: isNotFetching,
+
+
+    [getPlayerAction.pending.toString()]: isFetching,
+    [getPlayerAction.fulfilled.toString()]: (state, { payload: { response } }) => {
+      state.player = response;
+      state.isFetching = false;
+    },
+    [getPlayerAction.rejected.toString()]: isNotFetching,
+
+
   },
 });
 

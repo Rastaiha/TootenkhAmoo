@@ -15,6 +15,8 @@ import {
   Zoom,
 } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux';
+import { toPersianNumber } from '../../utils/translateNumber'
 
 const useStyles = makeStyles((theme) => ({
   description: {
@@ -29,9 +31,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Index({
-  open,
   handleClose,
 
+  open,
+  player,
 }) {
 
   const [image, setImage] = React.useState();
@@ -39,44 +42,77 @@ function Index({
 
   const classes = useStyles();
   return (
-    <Dialog maxWidth="xs" TransitionComponent={Slide} open={open} onClose={handleClose} >
+    <Dialog maxWidth="sm" TransitionComponent={Slide} open={open} onClose={handleClose} >
       <DialogTitle>
-        <Grid container direction='column' spacing={2} justify='center'>
-          <Grid item>
-            <Typography align='center' variant='h2'>
-              {'تیم دلاوران'}
-            </Typography>
-          </Grid>
-          <Grid item container alignItems='center' spacing={2}>
-            <Grid item>
-              <img width='30px' alt='' src={process.env.PUBLIC_URL + '/logo.png'} />
-            </Grid>
-            <Grid item>
-              <Typography>
-                {'توت طلایی'}
+        <Grid container spacing={2} justify='center'>
+
+          <Grid
+            item container
+            xs={12} sm={6}
+            direction='column'
+            alignItems='center' justify='center'
+            spacing={1}>
+            <Grid item container justify='center' alignItems='center'>
+              <Typography align='center' variant='h2'>
+                {`تیم ${player?.name}`}
               </Typography>
             </Grid>
-          </Grid>
-          <Grid item container alignItems='center' spacing={2}>
-            <Grid item>
-              <img width='30px' alt='' src={process.env.PUBLIC_URL + '/logo.png'} />
+            <Grid item container justify='center' alignItems='center'>
+              <img
+                style={{ borderRadius: 5 }}
+                width='200px' alt=''
+                src={process.env.PUBLIC_URL + '/items/question_mark.jpg'} />
             </Grid>
-            <Grid item>
-              <Typography>
-                {'توت طلایی'}
+          </Grid>
+
+          <Grid item container xs={12} sm={6} alignItems='center' justify='center'>
+            <Grid item container xs={12}>
+              <Typography variant='h3' gutterBottom>
+                {'دارایی‌ها:'}
               </Typography>
             </Grid>
-          </Grid>
-          <Grid item container alignItems='center' spacing={2}>
-            <Grid item>
-              <img width='30px' alt='' src={process.env.PUBLIC_URL + '/logo.png'} />
+            <Grid item container alignItems='center' spacing={1} xs={12} sm={6}>
+              <Grid item>
+                <img width='40px' alt='' src={process.env.PUBLIC_URL + '/items/coin.png'} />
+              </Grid>
+              <Grid item>
+                <Typography>
+                  {`سکه: ${toPersianNumber(player?.coin || 0)}`}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography>
-                {'توت طلایی'}
-              </Typography>
+            <Grid item container alignItems='center' spacing={1} xs={12} sm={6}>
+              <Grid item>
+                <img width='40px' alt='' src={process.env.PUBLIC_URL + '/items/blue_toot.png'} />
+              </Grid>
+              <Grid item>
+                <Typography>
+                  {`توت آبی: ${toPersianNumber(player?.blue_toot || 0)}`}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container alignItems='center' spacing={1} xs={12} sm={6}>
+              <Grid item>
+                <img width='40px' alt='' src={process.env.PUBLIC_URL + '/items/red_toot.png'} />
+              </Grid>
+              <Grid item>
+                <Typography>
+                  {`توت قرمز: ${toPersianNumber(player?.red_toot || 0)}`}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container alignItems='center' spacing={1} xs={12} sm={6}>
+              <Grid item>
+                <img width='40px' alt='' src={process.env.PUBLIC_URL + '/items/black_toot.png'} />
+              </Grid>
+              <Grid item>
+                <Typography>
+                  {`توت سیاه: ${toPersianNumber(player?.black_toot || 0)}`}
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
+
         </Grid>
       </DialogTitle>
       {/* <DialogActions>
@@ -98,5 +134,13 @@ function Index({
   );
 }
 
+const mapStateToProps = (state, props) => ({
+  player: state.account.player,
+})
 
-export default Index;
+export default connect(
+  mapStateToProps,
+  {
+
+  }
+)(Index);

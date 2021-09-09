@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import AppBar from '../components/Appbar/ResponsiveAppBar';
-// import { getUserProfileAction } from '../redux/slices/account';
-// import { addNotificationAction } from '../redux/slices/notifications';
+import {
+  getPlayerAction,
+} from '../redux/slices/account';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Layout = ({
+  getPlayer,
+
   backgroundImage,
   ...props
 }) => {
@@ -39,28 +42,9 @@ const Layout = ({
   const classes = useStyles({ backgroundImage });
   const history = useHistory();
 
-  // useEffect(() => {
-  //   if (
-  //     userProfile &&
-  //     (!userProfile?.first_name ||
-  //       !userProfile?.last_name ||
-  //       !userProfile?.gender ||
-  //       !userProfile?.province ||
-  //       !userProfile?.city) &&
-  //     !window.location.href.includes('profile')
-  //   ) {
-  //     addNotification({
-  //       message:
-  //         'پیش از هر چیز، لطفاً موارد الزامی در پروفایل رو تکمیل کن! موارد الزامی با ستاره مشخص شده‌اند.',
-  //       type: 'error',
-  //     });
-  //     history.push('/profile/');
-  //   }
-  // }, [userProfile]);
-
-  // useEffect(() => {
-  //   getUserProfile({ id: userAccount?.id });
-  // }, [getUserProfile]);
+  useEffect(() => {
+    getPlayer();
+  }, [])
 
   return (
     <>
@@ -72,11 +56,9 @@ const Layout = ({
 };
 
 const mapStateToProps = (state) => ({
-  userProfile: state.account.userProfile,
-  userAccount: state.account.userAccount,
+  player: state.account.player,
 });
 
 export default connect(mapStateToProps, {
-  // getUserProfile: getUserProfileAction,
-  // addNotification: addNotificationAction,
+  getPlayer: getPlayerAction,
 })(Layout);

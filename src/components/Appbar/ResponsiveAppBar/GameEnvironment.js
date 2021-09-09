@@ -3,10 +3,10 @@ import React from 'react';
 import { useTranslate } from 'react-redux-multilingual/lib/context';
 import { Link } from 'react-router-dom';
 
-import LogoButton from './components/LogoButton';
-import MenuButton from './components/MenuButton';
 import BackButton from './components/BackButton';
 import JitsiButton from './components/JitsiButton';
+import LogoButton from './components/LogoButton';
+import MenuButton from './components/MenuButton';
 
 const ArticleAppBarItems = () => {
   const t = useTranslate();
