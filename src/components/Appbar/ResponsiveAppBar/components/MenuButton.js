@@ -1,5 +1,10 @@
 import { IconButton, makeStyles, withWidth } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux'
+
+import {
+  getPlayerAction,
+} from '../../../../redux/slices/account'
 import GameMenu from '../../../Dialog/GameMenu';
 
 const useStyles = makeStyles(() => ({
@@ -11,13 +16,18 @@ const useStyles = makeStyles(() => ({
   }),
 }));
 
-const Index = ({ width }) => {
+const Index = ({ getPlayer, width }) => {
   const classes = useStyles({ width });
   const [openDialog, setOpenDialog] = React.useState(false);
 
   return (
     <>
-      <IconButton className={classes.logoButton} onClick={() => setOpenDialog(!openDialog)}>
+      <IconButton
+        className={classes.logoButton}
+        onClick={() => {
+          setOpenDialog(!openDialog);
+          getPlayer();
+        }}>
         <img
           src={process.env.PUBLIC_URL + '/logo.png'}
           alt="logo"
@@ -32,4 +42,11 @@ const Index = ({ width }) => {
   );
 }
 
-export default withWidth()(Index);
+export default withWidth()(
+  connect(
+    null,
+    {
+      getPlayer: getPlayerAction,
+    }
+  )(Index)
+);

@@ -30,6 +30,7 @@ import { connect } from 'react-redux';
 import NotificationCard from '../Cards/Notification'
 import { toPersianNumber } from '../../utils/translateNumber'
 import {
+  getUserNotificationsAction,
   markNotificationAsSeenAction,
 } from '../../redux/slices/account'
 
@@ -40,13 +41,16 @@ const useStyles = makeStyles((theme) => ({
 function Index({
   handleClose,
   markNotificationAsSeen,
+  getUserNotifications,
 
   open,
   notifications,
 }) {
   const classes = useStyles();
-  const [image, setImage] = React.useState();
-  const [text, setText] = React.useState();
+
+  React.useEffect(() => {
+    getUserNotifications()
+  }, [])
 
   return (
     <Dialog maxWidth="sm" TransitionComponent={Slide} open={open} onClose={handleClose} >
@@ -91,6 +95,7 @@ const mapStateToProps = (state, props) => ({
 export default connect(
   mapStateToProps,
   {
+    getUserNotifications: getUserNotificationsAction,
     markNotificationAsSeen: markNotificationAsSeenAction,
   }
 )(Index);

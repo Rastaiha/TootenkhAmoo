@@ -1,7 +1,10 @@
 import { IconButton, makeStyles, withWidth } from '@material-ui/core';
-import React from 'react';
-
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import React from 'react';
+import { connect } from 'react-redux'
+import {
+  getUserNotificationsAction,
+} from '../../../../redux/slices/account';
 import Notifications from '../../../Dialog/Notifications';
 
 const useStyles = makeStyles(() => ({
@@ -13,13 +16,18 @@ const useStyles = makeStyles(() => ({
   }),
 }));
 
-const Index = ({ width }) => {
+const Index = ({ getUserNotifications, width }) => {
   const classes = useStyles({ width });
   const [openDialog, setOpenDialog] = React.useState(false);
 
   return (
     <>
-      <IconButton className={classes.logoButton} onClick={() => setOpenDialog(!openDialog)}>
+      <IconButton
+        className={classes.logoButton}
+        onClick={() => {
+          setOpenDialog(!openDialog);
+          getUserNotifications();
+        }}>
         <NotificationsIcon />
       </IconButton>
       <Notifications
@@ -30,4 +38,11 @@ const Index = ({ width }) => {
   );
 }
 
-export default withWidth()(Index);
+export default withWidth()(
+  connect(
+    null,
+    {
+      getUserNotifications: getUserNotificationsAction,
+    }
+  )(Index)
+);

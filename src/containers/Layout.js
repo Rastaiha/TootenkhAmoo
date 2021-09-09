@@ -5,10 +5,6 @@ import { useHistory } from 'react-router';
 
 import AppBar from '../components/Appbar/ResponsiveAppBar';
 import DialogMessage from '../components/Dialog/DialogMessage';
-import {
-  getPlayerAction,
-  getUserNotificationsAction,
-} from '../redux/slices/account';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,22 +42,6 @@ const Layout = ({
   const [openDialogMessage, setOpenDialogMessage] = React.useState(open || false);
   const history = useHistory();
 
-  useEffect(() => {
-    getPlayer();
-    getUserNotifications();
-    const profileTimer = setInterval(() => {
-      getPlayer();
-    }, 60000);
-    const notificationsTimer = setInterval(() => {
-      getUserNotifications();
-    }, 60000);
-    return () => {
-      clearInterval(profileTimer);
-      clearInterval(notificationsTimer
-      );
-    }
-  }, []);
-
   return (
     <>
       <div className={classes.background} />
@@ -81,6 +61,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  getPlayer: getPlayerAction,
-  getUserNotifications: getUserNotificationsAction,
 })(Layout);

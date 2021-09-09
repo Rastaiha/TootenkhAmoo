@@ -18,6 +18,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { toPersianNumber } from '../../utils/translateNumber'
+import {
+  getPlayerAction
+} from '../../redux/slices/account';
 
 const useStyles = makeStyles((theme) => ({
   description: {
@@ -33,15 +36,17 @@ const useStyles = makeStyles((theme) => ({
 
 function Index({
   handleClose,
+  getPlayer,
 
   open,
   player,
 }) {
-
-  const [image, setImage] = React.useState();
-  const [text, setText] = React.useState();
-
   const classes = useStyles();
+
+  React.useEffect(() => {
+    getPlayer();
+  }, []);
+
   return (
     <Dialog maxWidth="sm" TransitionComponent={Slide} open={open} onClose={handleClose} >
       <DialogTitle>
@@ -118,6 +123,6 @@ const mapStateToProps = (state, props) => ({
 export default connect(
   mapStateToProps,
   {
-
+    getPlayer: getPlayerAction,
   }
 )(Index);

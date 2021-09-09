@@ -108,10 +108,6 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
-      <MessageSeries
-        handleClose={() => setDialogOpen(!dialogOpen)}
-        open={dialogOpen}
-      />
     </Layout>
   );
 };
