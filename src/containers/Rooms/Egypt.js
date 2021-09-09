@@ -1,10 +1,7 @@
-import {
-  Grid,
-  makeStyles,
-} from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Image, Layer, Stage, Star, Text } from 'react-konva';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
 import MessageSeries from '../../components/Dialog/MessageSeries';
@@ -18,54 +15,67 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 const Index = () => {
-  let history = useHistory()
+  let history = useHistory();
   const classes = useStyles();
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const BACKGROUND_IMAGE = '/egypt/empty-room.png';
+  const BACKGROUND_IMAGE = '/egypt/egypt room - empty 2.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
-  const [objects, setObjects] = React.useState(
-    [
-      {
-        urlImage: process.env.PUBLIC_URL + '/egypt/cat.png',
-        id: 0,
-        x: 1005,
-        y: 370,
-        isHover: false,
-        onClick: () => goForward('/folan1'),
-      },
-      {
-        urlImage: process.env.PUBLIC_URL + '/egypt/harp.png',
-        id: 1,
-        x: 300,
-        y: 520,
-        isHover: false,
-        onClick: () => goForward('/folan1'),
-      },
-      {
-        urlImage: process.env.PUBLIC_URL + '/egypt/pharaoh.png',
-        id: 2,
-        x: 1250,
-        y: 100,
-        isHover: false,
-        onClick: () => goForward('/folan1'),
-      },
-      {
-        urlImage: process.env.PUBLIC_URL + '/egypt/pyramids.png',
-        id: 3,
-        x: 685,
-        y: 570,
-        isHover: false,
-        onClick: () => goForward('/folan1'),
-      }
-    ]
-  );
+  const [objects, setObjects] = React.useState([
+    {
+      urlImage: process.env.PUBLIC_URL + '/egypt/cat.png',
+      id: 0,
+      x: 1078,
+      y: 503,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/egypt/harp.png',
+      id: 1,
+      x: 490,
+      y: 680,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/egypt/pharaoh.png',
+      id: 2,
+      x: 1325,
+      y: 480,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/egypt/pyramids.png',
+      id: 3,
+      x: 805,
+      y: 600,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/egypt/egypt frame 2.png',
+      id: 4,
+      x: 715,
+      y: 225,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/egypt/door.png',
+      id: 5,
+      x: 165,
+      y: 750,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+  ]);
 
   const goForward = (dst) => {
     history.push(dst);
-  }
+  };
 
   const handleMouseEnter = (e) => {
     const id = e.target.id();
@@ -92,7 +102,9 @@ const Index = () => {
 
   return (
     <Layout backgroundImage={BACKGROUND_IMAGE}>
-      <Stage width={Math.min(image?.width * scaleY, window.innerWidth)} height={window.innerHeight}>
+      <Stage
+        width={Math.min(image?.width * scaleY, window.innerWidth)}
+        height={window.innerHeight}>
         <Layer
           draggable
           dragBoundFunc={(pos) => {
@@ -100,17 +112,17 @@ const Index = () => {
             if (window.innerWidth < image?.width * scaleY) {
               if (pos.x > 0) pos.x = 0;
               if (pos.x < window.innerWidth - image?.width * scaleY)
-                pos.x = window.innerWidth - image?.width * scaleY
+                pos.x = window.innerWidth - image?.width * scaleY;
             } else {
               pos.x = 0;
             }
             return pos;
-          }}
-        >
+          }}>
           <URLImage
             scaleX={scaleY}
             scaleY={scaleY}
-            src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
+            src={process.env.PUBLIC_URL + BACKGROUND_IMAGE}
+          />
 
           {objects.map((object) => (
             <ItemImage
@@ -118,13 +130,15 @@ const Index = () => {
               object={object}
               scale={scaleY}
               handleMouseEnter={handleMouseEnter}
-              handleMouseExit={handleMouseExit} />
+              handleMouseExit={handleMouseExit}
+            />
           ))}
         </Layer>
-      </Stage >
+      </Stage>
       <MessageSeries
         handleClose={() => setDialogOpen(!dialogOpen)}
-        open={dialogOpen} />
+        open={dialogOpen}
+      />
     </Layout>
   );
 };
