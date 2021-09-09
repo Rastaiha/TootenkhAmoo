@@ -27,7 +27,7 @@ const Index = () => {
             x: 4720,
             y: 1880,
             isHover: false,
-            onClick: () => goForward('/folan1'),
+            onClick: () => goForward('/egypt/'),
         },
         {
             urlImage: process.env.PUBLIC_URL + '/mainhall/Greece.png',
@@ -35,7 +35,7 @@ const Index = () => {
             x: 1330,
             y: 1885,
             isHover: false,
-            onClick: () => goForward('/folan1'),
+            onClick: () => goForward('/greece/'),
         },
         {
             urlImage: process.env.PUBLIC_URL + '/mainhall/Iran.png',
@@ -43,7 +43,7 @@ const Index = () => {
             x: 2120,
             y: 1790,
             isHover: false,
-            onClick: () => goForward('/folan1'),
+            onClick: () => goForward('/iran/"'),
         },
         {
             urlImage: process.env.PUBLIC_URL + '/mainhall/Japan.png',
@@ -51,7 +51,7 @@ const Index = () => {
             x: 3920,
             y: 1800,
             isHover: false,
-            onClick: () => goForward('/folan1'),
+            onClick: () => goForward('/japan/'),
         },
         {
             urlImage: process.env.PUBLIC_URL + '/mainhall/Mashahir.png',
@@ -59,7 +59,7 @@ const Index = () => {
             x: 3000,
             y: 1685,
             isHover: false,
-            onClick: () => goForward('/folan1'),
+            onClick: () => goForward('/mashahir/'),
         },
         {
             urlImage: process.env.PUBLIC_URL + '/mainhall/Viking.png',
@@ -67,7 +67,7 @@ const Index = () => {
             x: 5560,
             y: 1980,
             isHover: false,
-            onClick: () => goForward('/folan1'),
+            onClick: () => goForward('/viking/'),
         },
     ]);
 
