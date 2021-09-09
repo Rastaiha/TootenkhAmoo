@@ -17,31 +17,111 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
-  const BACKGROUND_IMAGE = '/Mashahir/Mashahir-Full.png';
+  const BACKGROUND_IMAGE = '/Mashahir/Mashahir-Empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
-  const scaleX = window.innerWidth / image?.width;
+  const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
     {
-      urlImage: process.env.PUBLIC_URL + '/security_room/satl.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/araghi.png',
       id: 0,
-      x: 605,
-      y: 1425,
+      x: 395,
+      y: 390,
       isHover: false,
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/security_room/komod.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/maraghei.png',
       id: 1,
-      x: 2200,
-      y: 680,
+      x: 395,
+      y: 175,
       isHover: false,
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/security_room/Tablo.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/soorena.png',
       id: 2,
-      x: 319,
-      y: 1013,
+      x: 733,
+      y: 300,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/farabi.png',
+      id: 3,
+      x: 544,
+      y: 608,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/mollasadra.png',
+      id: 4,
+      x: 930,
+      y: 608,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/vahshi.png',
+      id: 5,
+      x: 1085,
+      y: 265,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz.png',
+      id: 6,
+      x: 1370,
+      y: 470,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/beyzayi.png',
+      id: 7,
+      x: 1860,
+      y: 265,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/rastaranj.png',
+      id: 8,
+      x: 2206,
+      y: 306,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/khaleghi.png',
+      id: 9,
+      x: 2530,
+      y: 283,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/vafa.png',
+      id: 10,
+      x: 1867,
+      y: 565,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/sadeghi.png',
+      id: 11,
+      x: 2206,
+      y: 600,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/loris.png',
+      id: 12,
+      x: 2530,
+      y: 565,
       isHover: false,
       onClick: () => goForward('/folan1'),
     },
@@ -77,41 +157,37 @@ const Index = () => {
   return (
     <Layout>
       <Stage
-        width={window.innerWidth}
-        height={Math.min(image?.height * scaleX, window.innerHeight)}>
+        width={Math.min(image?.width * scaleY, window.innerWidth)}
+        height={window.innerHeight}>
         <Layer
           draggable
           dragBoundFunc={(pos) => {
-            pos.x = 0;
-            if (window.innerHeight < image?.height * scaleX) {
-              if (pos.y > 0) pos.y = 0;
-              if (pos.y < window.innerHeight - image?.height * scaleX)
-                pos.y = window.innerHeight - image?.height * scaleX;
+            pos.y = 0;
+            if (window.innerWidth < image?.width * scaleY) {
+              if (pos.x > 0) pos.x = 0;
+              if (pos.x < window.innerWidth - image?.width * scaleY)
+                pos.x = window.innerWidth - image?.width * scaleY;
             } else {
-              pos.y = 0;
+              pos.x = 0;
             }
             return pos;
           }}>
           <URLImage
-            scaleX={scaleX}
-            scaleY={scaleX}
+            scaleX={scaleY}
+            scaleY={scaleY}
             src={process.env.PUBLIC_URL + BACKGROUND_IMAGE}
           />
           {objects.map((object) => (
             <ItemImage
               key={object.id}
               object={object}
-              scale={scaleX}
+              scale={scaleY}
               handleMouseEnter={handleMouseEnter}
               handleMouseExit={handleMouseExit}
             />
           ))}
         </Layer>
       </Stage>
-      {/* <MessageSeries
-        handleClose={() => setDialogOpen(!dialogOpen)}
-        open={dialogOpen}
-      /> */}
     </Layout>
   );
 };
