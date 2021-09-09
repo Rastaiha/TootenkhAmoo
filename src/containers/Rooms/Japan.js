@@ -7,7 +7,6 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from "react-router-dom";
 import useImage from 'use-image';
 
-import MessageSeries from '../../components/Dialog/MessageSeries';
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
@@ -22,7 +21,6 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory()
   const classes = useStyles();
-  const [dialogOpen, setDialogOpen] = React.useState(false);
   const BACKGROUND_IMAGE = '/japan/japan room - empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -129,9 +127,6 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
-      <MessageSeries
-        handleClose={() => setDialogOpen(!dialogOpen)}
-        open={dialogOpen} />
     </Layout>
   );
 };
