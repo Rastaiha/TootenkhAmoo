@@ -35,7 +35,7 @@ const Index = () => {
       x: 1290,
       y: 200,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => goForward('/baygani/'),
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Rahro/arrowleft.png',
@@ -43,7 +43,7 @@ const Index = () => {
       x: 165,
       y: 200,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => goForward('/mainhall/'),
     }
   ]);
 
