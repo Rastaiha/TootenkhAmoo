@@ -14,8 +14,9 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import DialogMessage from '../../../components/Dialog/DialogMessage';
+
 import ExchangeCard from '../../../components/Cards/ExchangeCard';
+import Message from '../../../components/Dialog/Message';
 import {
   createNewExchangeAction,
 } from '../../../redux/slices/exchange';
@@ -177,7 +178,7 @@ function Index({
           </Box>
         </TableContainer>
       </Grid>
-      <DialogMessage
+      <Message
         text={'آیا مطمئنید که می‌خواهید این مبادله را ایجاد کنید؟'}
         open={openDialog}
         handleClose={() => setOpenDialog(!openDialog)}

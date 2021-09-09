@@ -18,7 +18,7 @@ import {
   buyExchangeAction,
 } from '../../redux/slices/exchange';
 import { toPersianNumber } from '../../utils/translateNumber';
-import DialogMessage from '../Dialog/DialogMessage';
+import DialogMessage from '../Dialog/Message';
 
 const useStyles = makeStyles({
   container: {

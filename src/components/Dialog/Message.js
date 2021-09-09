@@ -1,16 +1,16 @@
 import {
+  Button,
+  ButtonGroup,
   Dialog,
   DialogActions,
-  Paper,
   DialogContent,
   DialogTitle,
-  ButtonGroup,
-  Button,
-  Grid,
   Fade,
+  Grid,
   Hidden,
-  Slide,
   makeStyles,
+  Paper,
+  Slide,
   Typography,
   Zoom,
 } from '@material-ui/core';
@@ -25,6 +25,17 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     width: '100%',
+  },
+  image: {
+    width: '100%',
+    maxWidth: '400px',
+    maxHeight: '400px',
+    objectFit: 'contain',
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '250px',
+      maxHeight: '250px',
+      width: '100%',
+    }
   }
 }));
 
@@ -33,18 +44,18 @@ function Index({
   handleClose,
   callbackFunction,
 
-  text: comingText,
+  text: inputText,
+  image: inputImage,
 }) {
-
-  const [image, setImage] = React.useState();
-  const [text, setText] = React.useState(comingText || 'آیا مطمئن هستید؟');
-
   const classes = useStyles();
+  const [image, setImage] = React.useState(inputImage || '/logo.png');
+  const [text, setText] = React.useState(inputText || 'آیا مطمئن هستید؟');
+
   return (
     <Dialog maxWidth="xs" TransitionComponent={Slide} open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
-          <img width='300px' alt='' src={process.env.PUBLIC_URL + '/logo.png'} />
+          <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
         </Grid>
       </DialogTitle>
       <DialogActions>
@@ -54,12 +65,13 @@ function Index({
               {text}
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item container justify='center' alignItems='center'>
             <ButtonGroup fullWidth variant='contained' color='primary'>
-              <Button onClick={() => { callbackFunction(); handleClose(); }}>
+              <Button
+                onClick={() => { callbackFunction(); handleClose(); }}>
                 {'تایید'}
               </Button>
-              <Button>
+              <Button onClick={() => handleClose()}>
                 {'لغو'}
               </Button>
             </ButtonGroup>

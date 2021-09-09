@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import AppBar from '../components/Appbar/ResponsiveAppBar';
-import DialogMessage from '../components/Dialog/DialogMessage';
+import DialogMessage from '../components/Dialog/Message';
 
 const useStyles = makeStyles((theme) => ({
   container: {

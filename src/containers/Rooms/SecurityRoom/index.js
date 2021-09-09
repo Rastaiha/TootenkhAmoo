@@ -4,9 +4,10 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
-import URLImage from '../../components/Konva/URLImage';
-import Layout from '../Layout';
-import ItemImage from './ItemImage';
+import MessageSeries from './MessageSeries';
+import URLImage from '../../../components/Konva/URLImage';
+import Layout from '../../Layout';
+import ItemImage from '../ItemImage';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -75,7 +76,7 @@ const Index = () => {
   };
 
   return (
-    <Layout>
+    <Layout backgroundImage={BACKGROUND_IMAGE}>
       <Stage
         width={Math.min(image?.width * scaleY, window.innerWidth)}
         height={window.innerHeight}>
@@ -108,8 +109,10 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
+      <MessageSeries />
     </Layout>
   );
 };
+
 
 export default Index;

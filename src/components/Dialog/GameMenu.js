@@ -17,10 +17,10 @@ import {
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toPersianNumber } from '../../utils/translateNumber'
 import {
   getPlayerAction
 } from '../../redux/slices/account';
+import { toPersianNumber } from '../../utils/translateNumber'
 
 const useStyles = makeStyles((theme) => ({
   description: {
@@ -43,9 +43,6 @@ function Index({
 }) {
   const classes = useStyles();
 
-  React.useEffect(() => {
-    getPlayer();
-  }, []);
 
   return (
     <Dialog maxWidth="sm" TransitionComponent={Slide} open={open} onClose={handleClose} >
