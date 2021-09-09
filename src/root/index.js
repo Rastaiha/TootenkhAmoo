@@ -13,6 +13,7 @@ import Mashahir from '../containers/Rooms/Mashahir';
 import Rahro from '../containers/Rooms/Rahro';
 import SecurityRoom from '../containers/Rooms/SecurityRoom';
 import Viking from '../containers/Rooms/Viking';
+import Mainhall from '../containers/Rooms/Mainhall';
 import PrivateRoute from './PrivateRoute';
 
 const Root = () => {
@@ -20,6 +21,7 @@ const Root = () => {
     <Switch>
       <Route path="/exchange/" component={Exchange} />
       <Route path="/baygani/" component={Baygani} />
+      <Route path="/mainhall/" component={Mainhall} />
       <Route path="/greece/" component={Greece} />
       <Route path="/iran/" component={Iran} />
       <Route path="/egypt/" component={Egypt} />
