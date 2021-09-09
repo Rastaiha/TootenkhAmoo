@@ -82,7 +82,10 @@ const App = ({
 
 const mapStateToProps = (state) => ({
   dir: state.Intl.locale === 'fa' ? 'rtl' : 'ltr',
-  isFetching: state.account.isFetching,
+  isFetching: state.account.isFetching
+    || state.problem.isFetching
+    || state.game.isFetching
+    || state.exchange.isFetching,
 });
 
 export default connect(mapStateToProps)(App);

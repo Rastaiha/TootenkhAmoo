@@ -68,7 +68,7 @@ const isNotFetching = (state) => {
 };
 
 const accountSlice = createSlice({
-  name: 'account',
+  name: 'exchange',
   initialState,
   reducers: {
   },
@@ -101,29 +101,6 @@ const accountSlice = createSlice({
       state.isFetching = false;
     },
     [buyExchangeAction.rejected.toString()]: isNotFetching,
-
-
-    // [getUserNotificationsAction.pending.toString()]: isFetching,
-    // [getUserNotificationsAction.fulfilled.toString()]: (state, { payload: { response } }) => {
-    //   state.notifications = response;
-    //   state.isFetching = false;
-    // },
-    // [getUserNotificationsAction.rejected.toString()]: isNotFetching,
-
-
-    // [markNotificationAsSeenAction.pending.toString()]: isFetching,
-    // [markNotificationAsSeenAction.fulfilled.toString()]: (state, action) => {
-    //   const newNotifications = [...state.notifications];
-    //   for (let i = 0; i < newNotifications.length; i++) {
-    //     if (newNotifications[i].id == action.meta.arg.notification) {
-    //       newNotifications.splice(i, 1);
-    //     }
-    //   }
-    //   state.notifications = newNotifications;
-    //   state.isFetching = false;
-    // },
-    // [markNotificationAsSeenAction.rejected.toString()]: isNotFetching,
-
 
   },
 });

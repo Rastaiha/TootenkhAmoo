@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Apis } from '../apis';
 import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
-  loginUrl,
   getPlayerUrl,
+  loginUrl,
   userNotificationsUrl,
 } from '../constants/urls';
 
