@@ -1,21 +1,22 @@
 import {
+  Button,
+  ButtonGroup,
   Dialog,
   DialogActions,
-  Paper,
   DialogContent,
   DialogTitle,
-  ButtonGroup,
-  Button,
-  Grid,
   Fade,
+  Grid,
   Hidden,
-  Slide,
   makeStyles,
+  Paper,
+  Slide,
   Typography,
   Zoom,
 } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { toPersianNumber } from '../../utils/translateNumber'
 
 const useStyles = makeStyles((theme) => ({
@@ -44,25 +45,17 @@ function Index({
   return (
     <Dialog maxWidth="sm" TransitionComponent={Slide} open={open} onClose={handleClose} >
       <DialogTitle>
-        <Grid container spacing={2} justify='center'>
-
-          <Grid
-            item container
-            xs={12} sm={6}
-            direction='column'
-            alignItems='center' justify='center'
-            spacing={1}>
-            <Grid item container justify='center' alignItems='center'>
-              <Typography align='center' variant='h2'>
-                {`تیم ${player?.name}`}
-              </Typography>
-            </Grid>
-            <Grid item container justify='center' alignItems='center'>
-              <img
-                style={{ borderRadius: 5 }}
-                width='200px' alt=''
-                src={process.env.PUBLIC_URL + '/items/question_mark.jpg'} />
-            </Grid>
+        <Typography align='center' variant='h2'>
+          {`تیم ${player?.name}`}
+        </Typography>
+      </DialogTitle>
+      <DialogContent>
+        <Grid container spacing={1} justify='center'>
+          <Grid item container xs={12} sm={6} alignItems='center' justify='center' spacing={1}>
+            <img
+              style={{ borderRadius: 5 }}
+              width='200px' alt=''
+              src={process.env.PUBLIC_URL + '/items/question_mark.jpg'} />
           </Grid>
 
           <Grid item container xs={12} sm={6} alignItems='center' justify='center'>
@@ -112,24 +105,8 @@ function Index({
               </Grid>
             </Grid>
           </Grid>
-
         </Grid>
-      </DialogTitle>
-      {/* <DialogActions>
-        <Grid container component={Paper} direction='column' spacing={2} justify='center'>
-          <Grid item>
-            <Typography>
-              {'جنازه‌های مردگان در پستو‌های این موزه پنهان شده‌اند و شما باید آن‌ها را پیدا کنید.'}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <ButtonGroup fullWidth variant='contained' color='primary'>
-              <Button>بعدی</Button>
-              <Button>قبلی</Button>
-            </ButtonGroup>
-          </Grid>
-        </Grid>
-      </DialogActions> */}
+      </DialogContent>
     </Dialog >
   );
 }

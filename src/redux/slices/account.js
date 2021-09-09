@@ -5,9 +5,8 @@ import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
   loginUrl,
   getPlayerUrl,
+  userNotificationsUrl,
 } from '../constants/urls';
-
-const initialState = { token: null, user: {} };
 
 export const loginAction = createAsyncThunkApi(
   'users/loginAction',
@@ -31,6 +30,37 @@ export const getPlayerAction = createAsyncThunkApi(
     },
   }
 );
+
+
+export const getUserNotificationsAction = createAsyncThunkApi(
+  'users/getUserNotificationsAction',
+  Apis.GET,
+  userNotificationsUrl,
+  {
+    defaultNotification: {
+      error: 'مشکلی در دریافت اعلان‌های کاربر وجود داشت.',
+    },
+  }
+);
+
+export const markNotificationAsSeenAction = createAsyncThunkApi(
+  'users/markNotificationAsSeenAction',
+  Apis.POST,
+  userNotificationsUrl,
+  {
+    defaultNotification: {
+      error: 'مشکلی در علامت‌گذاری اعلان وجود داشت.',
+    },
+  }
+);
+
+
+const initialState = {
+  token: null,
+  user: {},
+  notifications: [],
+};
+
 
 const isFetching = (state) => {
   state.isFetching = true;
@@ -62,6 +92,28 @@ const accountSlice = createSlice({
       state.isFetching = false;
     },
     [getPlayerAction.rejected.toString()]: isNotFetching,
+
+
+    [getUserNotificationsAction.pending.toString()]: isFetching,
+    [getUserNotificationsAction.fulfilled.toString()]: (state, { payload: { response } }) => {
+      state.notifications = response;
+      state.isFetching = false;
+    },
+    [getUserNotificationsAction.rejected.toString()]: isNotFetching,
+
+
+    [markNotificationAsSeenAction.pending.toString()]: isFetching,
+    [markNotificationAsSeenAction.fulfilled.toString()]: (state, action) => {
+      const newNotifications = [...state.notifications];
+      for (let i = 0; i < newNotifications.length; i++) {
+        if (newNotifications[i].id == action.meta.arg.notification) {
+          newNotifications.splice(i, 1);
+        }
+      }
+      state.notifications = newNotifications;
+      state.isFetching = false;
+    },
+    [markNotificationAsSeenAction.rejected.toString()]: isNotFetching,
 
 
   },

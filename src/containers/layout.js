@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import AppBar from '../components/Appbar/ResponsiveAppBar';
 import {
   getPlayerAction,
+  getUserNotificationsAction,
 } from '../redux/slices/account';
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Layout = ({
   getPlayer,
+  getUserNotifications,
 
   backgroundImage,
   ...props
@@ -44,7 +46,19 @@ const Layout = ({
 
   useEffect(() => {
     getPlayer();
-  }, [])
+    getUserNotifications();
+    const profileTimer = setInterval(() => {
+      getPlayer();
+    }, 20000);
+    const notificationsTimer = setInterval(() => {
+      getUserNotifications();
+    }, 30000);
+    return () => {
+      clearInterval(profileTimer);
+      clearInterval(notificationsTimer
+      );
+    }
+  }, []);
 
   return (
     <>
@@ -56,9 +70,9 @@ const Layout = ({
 };
 
 const mapStateToProps = (state) => ({
-  player: state.account.player,
 });
 
 export default connect(mapStateToProps, {
   getPlayer: getPlayerAction,
+  getUserNotifications: getUserNotificationsAction,
 })(Layout);
