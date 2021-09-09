@@ -6,6 +6,11 @@ import { useHistory } from 'react-router';
 import AppBar from '../components/Appbar/ResponsiveAppBar';
 import DialogMessage from '../components/Dialog/Message';
 
+import {
+  getPlayerAction,
+  getUserNotificationsAction,
+} from '../redux/slices/account';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -42,6 +47,11 @@ const Layout = ({
   const [openDialogMessage, setOpenDialogMessage] = React.useState(open || false);
   const history = useHistory();
 
+  useEffect(() => {
+    getPlayer();
+    getUserNotifications();
+  }, []);
+
   return (
     <>
       <div className={classes.background} />
@@ -60,5 +70,10 @@ const mapStateToProps = (state) => ({
   text: state.dialogMessage.text,
 });
 
-export default connect(mapStateToProps, {
-})(Layout);
+export default connect(
+  mapStateToProps,
+  {
+    getPlayer: getPlayerAction,
+    getUserNotifications: getUserNotificationsAction,
+  }
+)(Layout);

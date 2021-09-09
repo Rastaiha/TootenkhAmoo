@@ -14,9 +14,6 @@ const Index = ({
     return (<></>)
   }
 
-  console.log(image.height);
-  console.log(image.width);
-
   return (
     <Image
       image={image}
@@ -32,14 +29,20 @@ const Index = ({
       shadowColor="black"
       shadowBlur={10}
 
+      onTap={(e) => {
+        handleMouseEnter(e);
+        setTimeout(() => {
+          handleMouseExit(e);
+        }, [200])
+      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseExit}
       shadowOpacity={0.6}
       shadowOffsetX={object.isHover ? 10 : 5}
       shadowOffsetY={object.isHover ? 10 : 5}
 
-      scaleX={object.isHover ? scale + 0.05 : scale}
-      scaleY={object.isHover ? scale + 0.05 : scale}
+      scaleX={object.isHover ? scale + 0.03 : scale}
+      scaleY={object.isHover ? scale + 0.03 : scale}
     />
   )
 }

@@ -10,3 +10,5 @@ export const playerExchangesUrl = 'game/exchange/'
 export const createNewExchangesUrl = 'game/exchange/create/'
 
 
+// Problem:
+export const getProblemFromGroupUrl = ({ groupId }) => `game/getproblemfromgroup/${groupId}/`
