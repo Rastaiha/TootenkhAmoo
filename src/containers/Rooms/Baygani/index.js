@@ -4,7 +4,6 @@ import {
 import React from 'react';
 import { useHistory } from "react-router-dom";
 
-import MessageSeries from '../../../components/Dialog/MessageSeries';
 import Layout from '../../Layout';
 
 const useStyles = makeStyles(() => ({
@@ -21,9 +20,6 @@ const Index = () => {
 
   return (
     <Layout backgroundImage={BACKGROUND_IMAGE}>
-      <MessageSeries
-        handleClose={() => setDialogOpen(!dialogOpen)}
-        open={dialogOpen} />
     </Layout>
   );
 };

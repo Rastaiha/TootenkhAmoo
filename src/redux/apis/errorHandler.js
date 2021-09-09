@@ -11,6 +11,12 @@ export const errorHandler = (
     });
   }
 
+  if (error?.response?.data?.message) {
+    return rejectWithValue({
+      message: error?.response?.data?.message,
+    });
+  }
+
   switch (error.response.status) {
     case 401:
       if (error.config.url === 'auth/token/obtain/') {

@@ -31,11 +31,13 @@ const useStyles = makeStyles((theme) => ({
 function Index({
   open,
   handleClose,
+  callbackFunction,
 
+  text: comingText,
 }) {
 
   const [image, setImage] = React.useState();
-  const [text, setText] = React.useState();
+  const [text, setText] = React.useState(comingText || 'آیا مطمئن هستید؟');
 
   const classes = useStyles();
   return (
@@ -49,13 +51,17 @@ function Index({
         <Grid container component={Paper} direction='column' spacing={2} justify='center'>
           <Grid item>
             <Typography>
-              {'جنازه‌های مردگان در پستو‌های این موزه پنهان شده‌اند و شما باید آن‌ها را پیدا کنید.'}
+              {text}
             </Typography>
           </Grid>
           <Grid item>
             <ButtonGroup fullWidth variant='contained' color='primary'>
-              <Button>بعدی</Button>
-              <Button>قبلی</Button>
+              <Button onClick={() => { callbackFunction(); handleClose(); }}>
+                {'تایید'}
+              </Button>
+              <Button>
+                {'لغو'}
+              </Button>
             </ButtonGroup>
           </Grid>
         </Grid>

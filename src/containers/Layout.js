@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import AppBar from '../components/Appbar/ResponsiveAppBar';
+import DialogMessage from '../components/Dialog/DialogMessage';
 import {
   getPlayerAction,
   getUserNotificationsAction,
@@ -37,11 +38,12 @@ const Layout = ({
   getUserNotifications,
 
   backgroundImage,
+  open,
+  text,
   ...props
 }) => {
-
-  console.log(backgroundImage)
   const classes = useStyles({ backgroundImage });
+  const [openDialogMessage, setOpenDialogMessage] = React.useState(open || false);
   const history = useHistory();
 
   useEffect(() => {
@@ -65,11 +67,17 @@ const Layout = ({
       <div className={classes.background} />
       <AppBar mode="GAME_ENVIRONMENT" position="fixed" />
       <div className={classes.container}>{props.children}</div>
+      <DialogMessage
+        text={text}
+        handleClose={() => setOpenDialogMessage(!openDialogMessage)}
+        open={openDialogMessage} />
     </>
   );
 };
 
 const mapStateToProps = (state) => ({
+  open: state.dialogMessage.open,
+  text: state.dialogMessage.text,
 });
 
 export default connect(mapStateToProps, {

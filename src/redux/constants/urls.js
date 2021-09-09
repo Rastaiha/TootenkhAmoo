@@ -7,5 +7,6 @@ export const userNotificationsUrl = 'game/notification/'
 
 export const allExchangesUrl = 'game/exchange/all/'
 export const playerExchangesUrl = 'game/exchange/'
+export const createNewExchangesUrl = 'game/exchange/create/'
 
 
