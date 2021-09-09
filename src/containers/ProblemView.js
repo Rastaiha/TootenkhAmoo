@@ -1,4 +1,3 @@
-
 import {
   Button,
   Chip,
@@ -18,16 +17,16 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import AreYouSure from '../../components/Dialog/AreYouSure';
-import TinyPreview from '../../components/tiny_editor/react_tiny/Preview';
-import TinyEditor from '../../components/tiny_editor/react_tiny/TinyEditorComponent';
+import AreYouSure from '../components/Dialog/AreYouSure';
+import TinyPreview from '../components/tiny_editor/react_tiny/Preview';
+import TinyEditor from '../components/tiny_editor/react_tiny/TinyEditorComponent';
 // import {
 //   answerProblemAction,
 //   getOnePlayerProblemAction
 // } from '../../redux/slices/game';
 import {
   addNotificationAction,
-} from '../../redux/slices/notifications';
+} from '../redux/slices/notifications';
 import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({

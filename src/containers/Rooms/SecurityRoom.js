@@ -23,40 +23,24 @@ const Index = () => {
   let history = useHistory()
   const classes = useStyles();
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const BACKGROUND_IMAGE = '/viking/empty-room.png';
+  const BACKGROUND_IMAGE = '/security_room/security-empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState(
     [
       {
-        urlImage: process.env.PUBLIC_URL + '/viking/ax.png',
+        urlImage: process.env.PUBLIC_URL + '/security_room/satl.png',
         id: 0,
-        x: 1220,
-        y: 285,
+        x: 535,
+        y: 1340,
         isHover: false,
-        onClick: () => goForward('/problem/1'),
+        onClick: () => goForward('/folan1'),
       },
       {
-        urlImage: process.env.PUBLIC_URL + '/viking/horn.png',
+        urlImage: process.env.PUBLIC_URL + '/security_room/komod.png',
         id: 1,
-        x: 380,
-        y: 520,
-        isHover: false,
-        onClick: () => goForward('/folan1'),
-      },
-      {
-        urlImage: process.env.PUBLIC_URL + '/viking/hat.png',
-        id: 2,
-        x: 980,
+        x: 2050,
         y: 500,
-        isHover: false,
-        onClick: () => goForward('/folan1'),
-      },
-      {
-        urlImage: process.env.PUBLIC_URL + '/viking/ship.png',
-        id: 3,
-        x: 675,
-        y: 530,
         isHover: false,
         onClick: () => goForward('/folan1'),
       }
@@ -91,10 +75,8 @@ const Index = () => {
   };
 
   return (
-    <Layout backgroundImage={BACKGROUND_IMAGE}>
-      <Stage
-        width={Math.min(image?.width * scaleY, window.innerWidth)}
-        height={window.innerHeight}>
+    <Layout>
+      <Stage width={Math.min(image?.width * scaleY, window.innerWidth)} height={window.innerHeight}>
         <Layer
           draggable
           dragBoundFunc={(pos) => {
@@ -107,12 +89,12 @@ const Index = () => {
               pos.x = 0;
             }
             return pos;
-          }}>
+          }}
+        >
           <URLImage
             scaleX={scaleY}
             scaleY={scaleY}
             src={process.env.PUBLIC_URL + BACKGROUND_IMAGE} />
-
           {objects.map((object) => (
             <ItemImage
               key={object.id}
@@ -121,7 +103,6 @@ const Index = () => {
               handleMouseEnter={handleMouseEnter}
               handleMouseExit={handleMouseExit} />
           ))}
-
         </Layer>
       </Stage>
       <MessageSeries

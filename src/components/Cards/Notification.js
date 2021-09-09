@@ -32,7 +32,6 @@ const Index = ({
         <CardActionArea
           disabled={notification.has_seen}
           onClick={() => {
-            markNotificationAsSeen({ notification: notification.id })
           }}>
           <CardContent>
             <Typography gutterBottom variant="h5">

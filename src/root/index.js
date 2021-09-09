@@ -2,21 +2,24 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Login from '../containers/Login';
-import ProblemView from '../containers/Player/ProblemView';
+import ProblemView from '../containers/ProblemView';
+import Baygani from '../containers/Rooms/Baygani';
 import Egypt from '../containers/Rooms/Egypt';
 import Greece from '../containers/Rooms/Greece';
-import Japan from '../containers/Rooms/Japan';
 import Iran from '../containers/Rooms/Iran';
-import Security_room from '../containers/Rooms/Security_room';
+import Japan from '../containers/Rooms/Japan';
+import Security_room from '../containers/Rooms/SecurityRoom';
 import Viking from '../containers/Rooms/Viking';
 import SummerSchoolLanding from '../containers/SummerSchool';
+import PrivateRoute from './PrivateRoute'
 
 const Root = () => {
 
   return (
     <Switch>
+      <Route path='/baygani/' component={Baygani} />
       <Route path="/greece/" component={Greece} />
-        <Route path="/iran/" component={Iran} />
+      <Route path="/iran/" component={Iran} />
       <Route path="/egypt/" component={Egypt} />
       <Route path="/japan/" component={Japan} />
       <Route path="/viking/" component={Viking} />

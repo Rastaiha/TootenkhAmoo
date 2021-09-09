@@ -49,10 +49,10 @@ const Layout = ({
     getUserNotifications();
     const profileTimer = setInterval(() => {
       getPlayer();
-    }, 20000);
+    }, 60000);
     const notificationsTimer = setInterval(() => {
       getUserNotifications();
-    }, 30000);
+    }, 60000);
     return () => {
       clearInterval(profileTimer);
       clearInterval(notificationsTimer

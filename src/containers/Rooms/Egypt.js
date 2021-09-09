@@ -9,7 +9,7 @@ import useImage from 'use-image';
 
 import MessageSeries from '../../components/Dialog/MessageSeries';
 import URLImage from '../../components/Konva/URLImage';
-import Layout from '../layout';
+import Layout from '../Layout';
 import ItemImage from './ItemImage';
 
 const useStyles = makeStyles(() => ({

@@ -3,6 +3,9 @@ export const loginUrl = 'account/login/';
 
 // Game:
 export const getPlayerUrl = 'game/player/';
-export const userNotificationsUrl = 'game/user/notification/'
+export const userNotificationsUrl = 'game/notification/'
+
+export const allExchangesUrl = 'game/exchange/all/'
+export const playerExchangesUrl = 'game/exchange/'
 
 
