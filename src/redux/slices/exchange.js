@@ -4,6 +4,7 @@ import { Apis } from '../apis';
 import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
   allExchangesUrl,
+  createNewExchangesUrl,
   playerExchangesUrl,
 } from '../constants/urls';
 
@@ -35,7 +36,20 @@ export const buyExchangeAction = createAsyncThunkApi(
   playerExchangesUrl,
   {
     defaultNotification: {
+      success: 'مبادله با موفقیت انجام شد!',
       error: 'مشکلی در دریافت مبادلات بازیکن وجود داشت.',
+    },
+  }
+);
+
+export const createNewExchangeAction = createAsyncThunkApi(
+  'exchange/createNewExchangeAction',
+  Apis.POST,
+  createNewExchangesUrl,
+  {
+    defaultNotification: {
+      success: 'مبادله با موفقیت ساخته شد!',
+      error: 'مشکلی در ساخت مبادله وجود داشت.',
     },
   }
 );
@@ -73,6 +87,20 @@ const accountSlice = createSlice({
       state.isFetching = false;
     },
     [getPlayerExchangesAction.rejected.toString()]: isNotFetching,
+
+
+    [buyExchangeAction.pending.toString()]: isFetching,
+    [buyExchangeAction.fulfilled.toString()]: (state, action) => {
+      const newAllExchanges = [...state.allExchanges];
+      for (let i = 0; i < newAllExchanges.length; i++) {
+        if (newAllExchanges[i].id == action.meta.arg.exchange) {
+          newAllExchanges.splice(i, 1);
+        }
+      }
+      state.allExchanges = newAllExchanges;
+      state.isFetching = false;
+    },
+    [buyExchangeAction.rejected.toString()]: isNotFetching,
 
 
     // [getUserNotificationsAction.pending.toString()]: isFetching,

@@ -1,6 +1,6 @@
 import getLocale from './getLocale';
 
-export const toPersianNumber = (num) => {
+export const toPersianNumber = (num = 0) => {
   const persian = {
     0: '۰',
     1: '۱',
