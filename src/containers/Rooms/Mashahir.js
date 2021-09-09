@@ -72,7 +72,7 @@ const Index = () => {
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz.png',
       id: 6,
-      x: 1370,
+      x: 1460,
       y: 470,
       isHover: false,
       onClick: () => goForward('/folan1'),
