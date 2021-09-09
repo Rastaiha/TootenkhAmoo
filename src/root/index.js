@@ -12,6 +12,7 @@ import Japan from '../containers/Rooms/Japan';
 import Security_room from '../containers/Rooms/SecurityRoom';
 import Viking from '../containers/Rooms/Viking';
 import Rahro from '../containers/Rooms/Rahro';
+import Mashahir from '../containers/Rooms/Mashahir';
 import PrivateRoute from './PrivateRoute';
 
 const Root = () => {
@@ -26,6 +27,7 @@ const Root = () => {
       <Route path="/viking/" component={Viking} />
       <Route path="/security_room/" component={Security_room} />
       <Route path="/rahro/" component={Rahro} />
+      <Route path="/mashahir/" component={Mashahir} />
       <Route path="/login/" component={Login} />
       <Route path="/problem/:problemId/" component={ProblemView} />
       <Route path="/" component={Login} />
