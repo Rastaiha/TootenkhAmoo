@@ -29,6 +29,22 @@ const Index = () => {
       isHover: false,
       onClick: () => goForward('/folan1'),
     },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Rahro/arrowright.png',
+      id: 1,
+      x: 1290,
+      y: 200,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/Rahro/arrowleft.png',
+      id: 2,
+      x: 165,
+      y: 200,
+      isHover: false,
+      onClick: () => goForward('/folan1'),
+    }
   ]);
 
   const goForward = (dst) => {
