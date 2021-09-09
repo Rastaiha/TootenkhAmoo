@@ -11,20 +11,21 @@ import Iran from '../containers/Rooms/Iran';
 import Japan from '../containers/Rooms/Japan';
 import Security_room from '../containers/Rooms/SecurityRoom';
 import Viking from '../containers/Rooms/Viking';
-import PrivateRoute from './PrivateRoute'
+import Rahro from '../containers/Rooms/Rahro';
+import PrivateRoute from './PrivateRoute';
 
 const Root = () => {
-
   return (
     <Switch>
-      <Route path='/exchange/' component={Exchange} />
-      <Route path='/baygani/' component={Baygani} />
+      <Route path="/exchange/" component={Exchange} />
+      <Route path="/baygani/" component={Baygani} />
       <Route path="/greece/" component={Greece} />
       <Route path="/iran/" component={Iran} />
       <Route path="/egypt/" component={Egypt} />
       <Route path="/japan/" component={Japan} />
       <Route path="/viking/" component={Viking} />
       <Route path="/security_room/" component={Security_room} />
+      <Route path="/rahro/" component={Rahro} />
       <Route path="/login/" component={Login} />
       <Route path="/problem/:problemId/" component={ProblemView} />
       <Route path="/" component={Login} />
