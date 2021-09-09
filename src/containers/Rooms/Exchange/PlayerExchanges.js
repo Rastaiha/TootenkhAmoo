@@ -42,7 +42,7 @@ function Index({
         {playerExchanges?.length == 0 &&
           <Grid item>
             <Box p={10}>
-              <Typography variant='h4'>
+              <Typography variant='h4' align='center'>
                 {'شما تا کنون مبادله‌ای انجام نداده‌اید!'}
               </Typography>
             </Box>

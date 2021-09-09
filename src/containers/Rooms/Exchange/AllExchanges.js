@@ -44,7 +44,7 @@ function Index({
         {allExchanges?.length == 0 &&
           <Grid item>
             <Box p={10}>
-              <Typography variant='h4'>
+              <Typography variant='h4' align='center'>
                 {'مبادله‌ی فعالی وجود ندارد!'}
               </Typography>
             </Box>
