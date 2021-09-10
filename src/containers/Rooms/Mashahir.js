@@ -25,7 +25,7 @@ const Index = () => {
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/araghi.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/araghi p.png',
       id: 0,
       x: 395,
       y: 390,
@@ -33,7 +33,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/maraghei.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/maraghei p.png',
       id: 1,
       x: 395,
       y: 175,
@@ -41,7 +41,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/soorena.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/soorena p.png',
       id: 2,
       x: 733,
       y: 300,
@@ -49,7 +49,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/farabi.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/farabi p.png',
       id: 3,
       x: 544,
       y: 608,
@@ -57,7 +57,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/mollasadra.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/mollasadra p.png',
       id: 4,
       x: 930,
       y: 608,
@@ -65,7 +65,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/vahshi.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vahshi p.png',
       id: 5,
       x: 1085,
       y: 265,
@@ -73,7 +73,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz p.png',
       id: 6,
       x: 1460,
       y: 470,
@@ -84,7 +84,7 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/beyzayi.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/beyzayi p.png',
       id: 7,
       x: 1860,
       y: 265,
@@ -92,7 +92,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/rastaranj.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/rastaranj p.png',
       id: 8,
       x: 2206,
       y: 306,
@@ -100,7 +100,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/khaleghi.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/khaleghi p.png',
       id: 9,
       x: 2530,
       y: 283,
@@ -108,7 +108,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/vafa.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vafa p.png',
       id: 10,
       x: 1867,
       y: 565,
@@ -116,7 +116,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/sadeghi.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/sadeghi p.png',
       id: 11,
       x: 2206,
       y: 600,
@@ -124,7 +124,7 @@ const Index = () => {
       onClick: () => goForward('/folan1'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Normal/loris.png',
+      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/loris p.png',
       id: 12,
       x: 2530,
       y: 565,
