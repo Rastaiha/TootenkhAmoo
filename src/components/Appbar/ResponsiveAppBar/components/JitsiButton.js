@@ -15,7 +15,7 @@ const JitsiButton = ({ width }) => {
           <ForumIcon />
         </IconButton>
       </Tooltip>
-      {/* <DraggableJitsi open={open} handleClose={() => setOpen(false)} /> */}
+      <DraggableJitsi open={open} handleClose={() => setOpen(false)} />
     </>
   );
 }

@@ -34,12 +34,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Jitsi({ handleClose, width, displayName = 'User' }) {
+function Jitsi({ player, handleClose, width, displayName = 'User' }) {
   const classes = useStyles();
   const jitsiElement = useRef();
 
   // const { teamId } = useContext(StatePageContext); //todo: replace with team uuid
-  const teamId = 3;
+  const teamId = player?.id + '-Rasta-' + player?.id + '-Rasta-' + player?.id;
+
 
   const refresh = useCallback(() => {
     if (teamId) {
@@ -81,6 +82,7 @@ function Jitsi({ handleClose, width, displayName = 'User' }) {
 
 const mapStatesToProps = (state) => ({
   displayName: state.account.userAccount?.first_name + ' --- ' + state.account.userAccount?.last_name,
+  player: state.account.player,
 });
 
-export default withWidth()(connect(mapStatesToProps)(Jitsi));
+export default withWidth()(connect(mapStatesToProps, {})(Jitsi));
