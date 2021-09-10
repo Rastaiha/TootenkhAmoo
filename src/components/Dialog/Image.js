@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: '100%',
-    maxWidth: '400px',
-    maxHeight: '400px',
+    maxWidth: '300px',
+    maxHeight: '300px',
     objectFit: 'contain',
     [theme.breakpoints.down('xs')]: {
       maxWidth: '250px',
@@ -57,9 +57,14 @@ function Index({
   return (
     <Dialog maxWidth="xs" open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
-        <Grid container spacing={2} justify='center'>
-          <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
-        </Grid>
+        <Paper style={{ padding: 20 }}>
+          <Grid container spacing={2} justify='center'>
+            <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
+          </Grid>
+          <Grid item>
+            {'نیم‌خط، گاه‌نامه‌ی رستاست. شماره‌ی ۱ نیم‌خط رو ببینید.'}
+          </Grid>
+        </Paper>
       </DialogTitle>
     </Dialog >
   );
