@@ -102,7 +102,6 @@ const accountSlice = createSlice({
     [checkAnObjectAction.pending.toString()]: isFetching,
     [checkAnObjectAction.fulfilled.toString()]: (state, action) => {
       const newAllCheckableObjects = [...state.allCheckableObjects];
-      console.log(action)
       for (let i = 0; i < newAllCheckableObjects.length; i++) {
         if (newAllCheckableObjects[i].id == action.meta.arg.checkableObjectId) {
           newAllCheckableObjects.splice(i, 1);

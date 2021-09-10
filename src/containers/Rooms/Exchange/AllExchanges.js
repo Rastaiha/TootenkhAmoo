@@ -25,8 +25,6 @@ function Index({
     getAllExchanges();
   }, [])
 
-  console.log(allExchanges)
-
   return (
     <>
       <Grid

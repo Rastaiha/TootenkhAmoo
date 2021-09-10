@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
+
 import {
   getPlayerCheckableObjectsAction,
 } from '../../../redux/slices/game';
@@ -31,8 +32,6 @@ function Index({
   React.useEffect(() => {
     getPlayerCheckableObjects();
   }, [])
-
-  console.log(playerCheckableObjects);
 
   return (
     <>
@@ -56,8 +55,8 @@ function Index({
                   </TableCell>
                   <TableCell align='center'>
                     {playerCheckableObject.is_fake
-                      ? 'تقلبیه!'
-                      : 'اصله!'}
+                      ? 'تقلبیه'
+                      : 'اصله'}
                   </TableCell>
                 </TableRow>
               ))}

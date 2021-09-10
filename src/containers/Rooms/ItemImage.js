@@ -19,7 +19,6 @@ const Index = ({
       image={image}
       offsetX={image.width / 2}
       offsetY={image.height / 2}
-      onClick={object.onClick}
       key={object.id}
       id={object.id}
       x={object.x * scale}
@@ -28,6 +27,11 @@ const Index = ({
       rotation={object.rotation}
       shadowColor="black"
       shadowBlur={10}
+      shadowOpacity={0.6}
+      shadowOffsetX={object.isHover ? 10 : 5}
+      shadowOffsetY={object.isHover ? 10 : 5}
+      scaleX={object.isHover ? scale + 0.03 : scale}
+      scaleY={object.isHover ? scale + 0.03 : scale}
 
       onTap={(e) => {
         handleMouseEnter(e);
@@ -37,12 +41,9 @@ const Index = ({
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseExit}
-      shadowOpacity={0.6}
-      shadowOffsetX={object.isHover ? 10 : 5}
-      shadowOffsetY={object.isHover ? 10 : 5}
 
-      scaleX={object.isHover ? scale + 0.03 : scale}
-      scaleY={object.isHover ? scale + 0.03 : scale}
+      onDblTap={object.onClick}
+      onClick={object.onClick}
     />
   )
 }

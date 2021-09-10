@@ -12,7 +12,6 @@ const redirectSlice = createSlice({
   },
   extraReducers: {
     [getProblemFromGroupAction.fulfilled.toString()]: (state, action) => {
-      console.log(action)
       return {
         redirectTo: `/problem/${action?.meta?.arg.groupProblemId}/${action.payload.response.submit.id}/${action.payload.response.problem.id}/`,
       };

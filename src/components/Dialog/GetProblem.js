@@ -59,8 +59,6 @@ function Index({
   const [image, setImage] = React.useState(inputImage || '/characters/gooooorb.png');
   const [showDialog, setShowDialog] = React.useState(false);
 
-  console.log(problemGroupId)
-
   React.useEffect(() => {
     if (problemGroupId) {
       hasPlayerGotProblem({ problemGroupId }).then((action) => {
@@ -78,7 +76,6 @@ function Index({
   }, [problemGroupId])
 
   const doRequestProblem = () => {
-    console.log(problemGroupId)
     getProblemFromGroup({ problemGroupId });
     handleClose();
   }

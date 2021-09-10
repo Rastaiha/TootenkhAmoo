@@ -17,34 +17,58 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
-  const BACKGROUND_IMAGE = '/Rahro/Rahro-Empty.png';
+  const BACKGROUND_IMAGE = '/mainhall/EmptyHall-LowQ.jpg';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
     {
-      urlImage: process.env.PUBLIC_URL + '/Rahro/absardkon.png',
+      urlImage: process.env.PUBLIC_URL + '/mainhall/Egypt.png',
       id: 0,
-      x: 165,
-      y: 580,
+      x: 4720,
+      y: 1880,
       isHover: false,
-      onClick: () => { },
+      onClick: () => goForward('/egypt/'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Rahro/arrowright.png',
+      urlImage: process.env.PUBLIC_URL + '/mainhall/Greece.png',
       id: 1,
-      x: 1290,
-      y: 200,
+      x: 1330,
+      y: 1885,
       isHover: false,
-      onClick: () => goForward('/baygani/'),
+      onClick: () => goForward('/greece/'),
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Rahro/arrowleft.png',
-      id: 2,
-      x: 165,
-      y: 200,
+      urlImage: process.env.PUBLIC_URL + '/mainhall/Iran.png',
+      id: 3,
+      x: 2120,
+      y: 1790,
       isHover: false,
-      onClick: () => goForward('/main_hall/'),
-    }
+      onClick: () => goForward('/iran/"'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/mainhall/Japan.png',
+      id: 4,
+      x: 3920,
+      y: 1800,
+      isHover: false,
+      onClick: () => goForward('/japan/'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/mainhall/Mashahir.png',
+      id: 5,
+      x: 3000,
+      y: 1685,
+      isHover: false,
+      onClick: () => goForward('/mashahir/'),
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/mainhall/Viking.png',
+      id: 6,
+      x: 5560,
+      y: 1980,
+      isHover: false,
+      onClick: () => goForward('/viking/'),
+    },
   ]);
 
   const goForward = (dst) => {
