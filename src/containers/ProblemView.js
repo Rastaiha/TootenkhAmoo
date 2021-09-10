@@ -32,7 +32,7 @@ import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: 100,
+    paddingTop: 80,
     display: 'flex',
     justifyContent: 'center',
     marginRight: 'auto !important',
@@ -111,7 +111,7 @@ const ViewProblem = ({
   }
 
   return (
-    <Layout>
+    <Layout backgroundImage={'/backgrounds/baygani.jpg'}>
       <Container className={classes.container}>
         <Grid xs={12} sm={10} md={8} container spacing={2} direction="row" justify="center">
           <Grid item xs={12}>

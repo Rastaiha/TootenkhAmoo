@@ -84,16 +84,18 @@ const Index = () => {
       id: 6,
       x: 1220,
       y: 235,
+      disabled: true,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/japan/door.png',
       id: 7,
       x: 1330,
       y: 750,
+      disabled: true,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
   ]);
 

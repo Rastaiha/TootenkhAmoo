@@ -1,13 +1,13 @@
 import './Theme/Styles/App.css';
 
-import { CssBaseline, LinearProgress } from '@material-ui/core';
+import { Button, CssBaseline, LinearProgress } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { SnackbarProvider } from 'notistack';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-redux-multilingual';
-
+import { useHistory } from 'react-router-dom';
 import MoreThanOneTabDialog from './components/Dialog/MoreThanOneTab';
 import Notifier from './components/Notifications/Notifications';
 import Root from './root';
@@ -28,6 +28,8 @@ const App = ({
   dir,
   isFetching,
 }) => {
+  const history = useHistory()
+
   useEffect(() => {
     document.body.dir = dir;
   }, [dir]);
@@ -67,6 +69,16 @@ const App = ({
           <StylesProvider jss={jss}>
             <Loading />
             <ArticleApp />
+            {
+              <div style={{ position: 'fixed', bottom: 20, right: 20 }}>
+                <Button
+                  onClick={() => history.goBack()}
+                  variant="contained"
+                  color="primary">
+                  {'بازگشت به عقب'}
+                </Button>
+              </div>
+            }
           </StylesProvider>
         </ThemeProvider>
       ) : (
