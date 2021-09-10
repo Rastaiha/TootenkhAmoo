@@ -17,13 +17,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import AreYouSure from '../components/Dialog/AreYouSure';
+import Message from '../components/Dialog/Message';
 import TinyPreview from '../components/tiny_editor/react_tiny/Preview';
 import TinyEditor from '../components/tiny_editor/react_tiny/TinyEditorComponent';
-// import {
-//   answerProblemAction,
-//   getOnePlayerProblemAction
-// } from '../../redux/slices/game';
+import {
+  submitAnswerAction,
+  getProblemFromGroupAction,
+} from '../redux/slices/problem';
 import {
   addNotificationAction,
 } from '../redux/slices/notifications';
@@ -45,33 +45,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ViewProblem = ({
-  answerProblem,
-  getOnePlayerProblem,
+  submitAnswer,
   addNotification,
+  getProblemFromGroup,
 
-  getSpecificSingleProblem,
-  getSpecificMultipleProblem,
-  getPlayerInfo,
-  getProblemHints,
-  hints = [],
-  playerProblem,
+  problem,
 }) => {
   const classes = useStyles();
-  let { gameId, problemId } = useParams();
-  const [problem, setProblem] = useState();
+  const { problemGroupId, submitId, problemId } = useParams();
   const [text, setText] = useState();
   const [file, setFile] = useState({ file: '', value: '' });
-  const [isDialogOpen, setDialogStatus] = useState(false);
-  const [isDialogOpen2, setDialogStatus2] = useState(false);
-  const [, setHint] = useState('');
+  const [openDialog, setOpenDialog] = useState(false);
 
-  // useEffect(() => {
-  //   getOnePlayerProblem({ gameId, problemId })
-  // }, [getProblemHints, getSpecificSingleProblem, getSpecificMultipleProblem, getPlayerInfo, gameId, problemId]);
-
-  useEffect(() => {
-    setProblem(playerProblem?.problem)
-  }, [playerProblem])
+  React.useEffect(() => {
+    getProblemFromGroup({ problemGroupId })
+  }, [])
 
   const handleFileChange = async (e) => {
     e.preventDefault();
@@ -89,7 +77,9 @@ const ViewProblem = ({
     }
   };
 
-  const submitAnswer = () => {
+  console.log(problem)
+
+  const doSubmitAnswer = () => {
     if (!file?.file && !text) {
       addNotification({
         message: 'حداقل یک متن یا یک فایل برای پاسخ سوال قرار دهید.',
@@ -97,23 +87,25 @@ const ViewProblem = ({
       });
       return;
     }
-    answerProblem({ gameId, problemId, text, file: file.file })
+    submitAnswer({
+      submitId,
+      problemId,
+      text,
+      file: file.file,
+    })
   }
-
 
   const clearFile = () => {
     setFile({ file: '', value: '' });
   }
 
-  const submitHint = () => {
-    // submitNewHint({ gameId, problemId, question: hint })
-  }
+  console.log(doSubmitAnswer)
 
   return (
     <Layout>
       <Grid container spacing={2} justify='center'>
         <Grid item>
-          <Typography variant='h1' align="center">{problem?.title ? `«${problem?.title}»` : ''}</Typography>
+          <Typography variant='h1' align="center">{problem?.problem?.title ? `«${problem?.problem?.title}»` : ''}</Typography>
         </Grid>
         <Grid container item spacing={2} justify='center'>
           <Grid container item direction='column' xs={12} md={8} spacing={2}>
@@ -121,7 +113,9 @@ const ViewProblem = ({
               <Paper className={classes.paper}>
                 <Grid item container direction='column'>
                   <Grid item>
-                    <Typography gutterBottom variant='h3' align='center'>صورت مسئله</Typography>
+                    <Typography gutterBottom variant='h3' align='center'>
+                      {'صورت'}
+                    </Typography>
                   </Grid>
                   <Divider className={classes.divider} />
                   <Grid item>
@@ -131,7 +125,7 @@ const ViewProblem = ({
                         scrolling: 'no',
                         width: '100%',
                       }}
-                      content={problem?.text} />
+                      content={problem?.problem?.text} />
                   </Grid>
                 </Grid>
               </Paper>
@@ -143,42 +137,62 @@ const ViewProblem = ({
                     <Typography gutterBottom variant='h3' align='center'>پاسخ</Typography>
                   </Grid>
                   <Divider className={classes.divider} />
-                  <Grid item>
-                    <TinyEditor
-                      initialValue={problem?.text_answer}
-                      onChange={setText} />
-                  </Grid>
-                  <Grid item container spacing={2} alignItems='center'>
-                    <Grid item>
-                      <Button variant='contained' color='secondary' onClick={() => document.getElementById('userProfilePicture').click()}>
-                        {'انتخاب فایل'}
-                      </Button>
-                      <input
-                        value={file.value} accept="application/pdf,image/*"
-                        id='userProfilePicture' type="file"
-                        style={{ display: 'none' }} onChange={handleFileChange} />
-                    </Grid>
-                    <Grid item>
-                      {file.file &&
-                        <Grid container justify='center' alignItems='center'>
-                          <Grid item>
-                            <Button
-                              size="small"
-                              startIcon={
-                                <IconButton size='small' onClick={clearFile}>
-                                  <ClearIcon />
-                                </IconButton>}
-                              endIcon={<DescriptionOutlinedIcon />}
-                              className={classes.lastUploadButton}>
-                              {file.file?.name}
-                            </Button>
-                          </Grid>
+                  {problem?.problem?.problem_type == 'DescriptiveProblem' &&
+                    <>
+                      <Grid item>
+                        <TinyEditor
+                          initialValue={problem?.text_answer}
+                          onChange={setText} />
+                      </Grid>
+                      <Grid item container spacing={2} alignItems='center'>
+                        <Grid item>
+                          <Button variant='contained' color='secondary' onClick={() => document.getElementById('userProfilePicture').click()}>
+                            {'انتخاب فایل'}
+                          </Button>
+                          <input
+                            value={file.value} accept="application/pdf,image/*"
+                            id='userProfilePicture' type="file"
+                            style={{ display: 'none' }} onChange={handleFileChange} />
                         </Grid>
-                      }
+                        <Grid item>
+                          {file.file &&
+                            <Grid container justify='center' alignItems='center'>
+                              <Grid item>
+                                <Button
+                                  size="small"
+                                  startIcon={
+                                    <IconButton size='small' onClick={clearFile}>
+                                      <ClearIcon />
+                                    </IconButton>}
+                                  endIcon={<DescriptionOutlinedIcon />}
+                                  className={classes.lastUploadButton}>
+                                  {file.file?.name}
+                                </Button>
+                              </Grid>
+                            </Grid>
+                          }
+                        </Grid>
+                      </Grid>
+                    </>
+                  }
+                  {problem?.problem?.problem_type == 'ShortAnswerProblem' &&
+                    <Grid item>
+                      <TextField
+                        onChange={(e) => {
+                          setText(e.target.value);
+                        }}
+                        variant='outlined'
+                        fullWidth />
                     </Grid>
-                  </Grid>
+                  }
                   <Grid item>
-                    <Button disabled fullWidth variant='contained' color='primary' onClick={() => setDialogStatus(true)}>ثبت پاسخ</Button>
+                    <Button
+                      fullWidth
+                      variant='contained'
+                      color='primary'
+                      onClick={() => setOpenDialog(true)}>
+                      {'ثبت پاسخ'}
+                    </Button>
                   </Grid>
                 </Grid>
               </Paper>
@@ -186,15 +200,11 @@ const ViewProblem = ({
           </Grid>
         </Grid>
       </Grid >
-      <AreYouSure
-        open={isDialogOpen}
-        handleClose={() => { setDialogStatus(!isDialogOpen) }}
-        callBackFunction={submitAnswer}
-      />
-      <AreYouSure
-        open={isDialogOpen2}
-        handleClose={() => { setDialogStatus2(!isDialogOpen2) }}
-        callBackFunction={submitHint}
+      <Message
+        open={openDialog}
+        text={'آیا مطمئنید که می‌خواهید پاسخ مسئله را ارسال کنید؟ شما فقط یک‌بار امکان این کار را دارید!'}
+        handleClose={() => { setOpenDialog(!openDialog) }}
+        callbackFunction={doSubmitAnswer}
       />
     </Layout>
   );
@@ -202,25 +212,15 @@ const ViewProblem = ({
 }
 
 const mapStateToProps = (state) => ({
-  // playerProblem: state.game.playerProblem,
-  // singleProblem: state.game.singleProblem,
-  // multipleProblem: state.game.multipleProblem,
-  // hints: state.game.hints,
+  problem: state.problem.problem,
 });
 
 
 export default connect(
   mapStateToProps,
   {
-    // answerProblem: answerProblemAction,
-    // getOnePlayerProblem: getOnePlayerProblemAction,
+    getProblemFromGroup: getProblemFromGroupAction,
+    submitAnswer: submitAnswerAction,
     addNotification: addNotificationAction,
-    // getSpecificSingleProblem,
-    // getSpecificMultipleProblem,
-    // getPlayerInfo,
-    // submitSingleProblemAnswer,
-    // submitMultipleProblemAnswer,
-    // getProblemHints,
-    // submitNewHint,
   }
 )(ViewProblem);

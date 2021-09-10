@@ -15,6 +15,10 @@ import {
   Zoom,
 } from '@material-ui/core';
 import React from 'react';
+import { useParams } from 'react-router'
+import {
+  getProblemFromGroupAction,
+} from '../../redux/slices/problem'
 
 const useStyles = makeStyles((theme) => ({
   description: {
@@ -48,8 +52,13 @@ function Index({
   image: inputImage,
 }) {
   const classes = useStyles();
+  const { problemGroupId, problemId, submitId } = useParams();
   const [image, setImage] = React.useState(inputImage || '/logo.png');
   const [text, setText] = React.useState(inputText || 'آیا مطمئن هستید؟');
+
+
+
+  console.log(callbackFunction)
 
   return (
     <Dialog maxWidth="xs" TransitionComponent={Slide} open={open} onClose={handleClose} PaperComponent='false'>

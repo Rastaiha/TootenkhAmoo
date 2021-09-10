@@ -5,7 +5,6 @@ import { useHistory } from 'react-router';
 
 import AppBar from '../components/Appbar/ResponsiveAppBar';
 import DialogMessage from '../components/Dialog/Message';
-
 import {
   getPlayerAction,
   getUserNotificationsAction,

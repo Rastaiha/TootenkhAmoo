@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { getProblemFromGroupAction } from './problem';
 
 const initialState = { redirectTo: null, force: false };
 
@@ -10,8 +11,13 @@ const redirectSlice = createSlice({
     initRedirect: () => initialState,
   },
   extraReducers: {
-
-  },
+    [getProblemFromGroupAction.fulfilled.toString()]: (state, action) => {
+      console.log(action)
+      return {
+        redirectTo: `/problem/${action?.meta?.arg.groupProblemId}/${action.payload.response.submit.id}/${action.payload.response.problem.id}/`,
+      };
+    },
+  }
 });
 
 export const { initRedirect: initRedirectAction } = redirectSlice.actions;

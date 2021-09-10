@@ -54,7 +54,7 @@ function Index({
   const [text, setText] = React.useState(inputText || 'آیا مطمئن هستید؟');
 
   return (
-    <Dialog style={{ overflowX: 'hidden' }} maxWidth="xs" TransitionComponent={Grow} open={open} PaperComponent='false'>
+    <Dialog maxWidth="xs" TransitionComponent={Grow} open={open} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
           <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />

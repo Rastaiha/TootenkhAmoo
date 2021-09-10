@@ -11,4 +11,7 @@ export const createNewExchangesUrl = 'game/exchange/create/'
 
 
 // Problem:
-export const getProblemFromGroupUrl = ({ groupId }) => `game/getproblemfromgroup/${groupId}/`
+export const getProblemFromGroupUrl = ({ problemGroupId }) => `game/getproblemfromgroup/${problemGroupId}/`;
+export const hasPlayerGotProblemUrl = ({ problemGroupId }) => `game/isproblemgotenfromgroup/${problemGroupId}/`; // todo: fix غلط املایی
+export const submitProblemUrl = ({ submitId, problemId }) => `game/submitanswer/${submitId}/${problemId}/`;
+
