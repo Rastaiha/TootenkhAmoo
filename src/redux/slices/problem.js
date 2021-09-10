@@ -28,7 +28,7 @@ export const getProblemFromGroupAction = createAsyncThunkApi(
 
 export const submitAnswerAction = createAsyncThunkApi(
   'problem/submitAnswerAction',
-  Apis.POST,
+  Apis.POST_FORM_DATA,
   submitProblemUrl,
   {
     defaultNotification: {
