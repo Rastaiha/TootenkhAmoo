@@ -9,6 +9,7 @@ import Exchange from '../containers/Rooms/Exchange';
 import Greece from '../containers/Rooms/Greece';
 import Iran from '../containers/Rooms/Iran';
 import Japan from '../containers/Rooms/Japan';
+import TheEnd from '../containers/Rooms/TheEnd';
 import MainHall from '../containers/Rooms/MainHall';
 import Mashahir from '../containers/Rooms/Mashahir';
 import Rahro from '../containers/Rooms/Rahro';
@@ -19,7 +20,7 @@ import PrivateRoute from './PrivateRoute';
 const Root = () => {
   return (
     <Switch>
-      <PrivateRoute path="/exchange/" component={Exchange} />
+      {/* <PrivateRoute path="/exchange/" component={Exchange} />
       <PrivateRoute path="/baygani/:mode/" component={Baygani} />
       <PrivateRoute path="/baygani/" component={Baygani} />
       <PrivateRoute path="/main_hall/" component={MainHall} />
@@ -32,8 +33,8 @@ const Root = () => {
       <PrivateRoute path="/rahro/" component={Rahro} />
       <PrivateRoute path="/mashahir/" component={Mashahir} />
       <PrivateRoute path="/problem/:problemGroupId/:submitId/:problemId/" component={ProblemView} />
-      <Route path="/login/" component={Login} />
-      <Route path="/" component={Login} />
+      <Route path="/login/" component={Login} /> */}
+      <Route path="/" component={TheEnd} />
       <Route path="*" render={() => <Redirect to={{ pathname: '/' }} />} />
     </Switch>
   );
