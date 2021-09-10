@@ -118,6 +118,8 @@ function Index({
           </Grid>
         }
       </Grid>
+
+
       <Message
         callbackFunction={() => checkAnObject({ checkableObjectId: objectId })}
         text={'آیا حاضرید با پرداخت توت‌های گفته‌شده، شی را از نظر اصل‌بودن یا تقلبی‌بودن بررسی کنید؟'}
