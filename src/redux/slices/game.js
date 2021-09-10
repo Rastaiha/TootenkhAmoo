@@ -4,8 +4,9 @@ import { Apis } from '../apis';
 import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
   allExchangesUrl,
-  createNewExchangesUrl,
-  playerExchangesUrl,
+  checkObjectsUrl,
+  getAllCheckableObjectsUrl,
+  getPlayerCheckableObjectsUrl,
 } from '../constants/urls';
 
 export const getAllFamousPersonsAction = createAsyncThunkApi(
@@ -19,11 +20,10 @@ export const getAllFamousPersonsAction = createAsyncThunkApi(
   }
 );
 
-
-export const getAllCheckableObjectsAction = createAsyncThunkApi(
-  'game/getAllCheckableObjectsAction',
+export const getPlayerCheckableObjectsAction = createAsyncThunkApi(
+  'game/getPlayerCheckableObjectsAction',
   Apis.GET,
-  allExchangesUrl,
+  getPlayerCheckableObjectsUrl,
   {
     defaultNotification: {
       error: 'مشکلی در دریافت اشیای چک‌شدنی وجود داشت.',
@@ -32,12 +32,24 @@ export const getAllCheckableObjectsAction = createAsyncThunkApi(
 );
 
 
-export const checkAnObjectAction = createAsyncThunkApi(
-  'game/checkAnObjectAction',
+export const getAllCheckableObjectsAction = createAsyncThunkApi(
+  'game/getAllCheckableObjectsAction',
   Apis.GET,
-  allExchangesUrl,
+  getAllCheckableObjectsUrl,
   {
     defaultNotification: {
+      error: 'مشکلی در دریافت اشیای چک‌شدنی وجود داشت.',
+    },
+  }
+);
+
+export const checkAnObjectAction = createAsyncThunkApi(
+  'game/checkAnObjectAction',
+  Apis.POST,
+  checkObjectsUrl,
+  {
+    defaultNotification: {
+      success: 'شی مورد نظر با موفقیت بررسی شد!',
       error: 'مشکلی در چک‌کردن اشیا وجود داشت.',
     },
   }
@@ -46,6 +58,7 @@ export const checkAnObjectAction = createAsyncThunkApi(
 const initialState = {
   allFamousPersons: [],
   allCheckableObjects: [],
+  playerCheckableObjects: [],
 };
 
 const isFetching = (state) => {
@@ -76,6 +89,29 @@ const accountSlice = createSlice({
       state.isFetching = false;
     },
     [getAllCheckableObjectsAction.rejected.toString()]: isNotFetching,
+
+
+    [getPlayerCheckableObjectsAction.pending.toString()]: isFetching,
+    [getPlayerCheckableObjectsAction.fulfilled.toString()]: (state, { payload: { response } }) => {
+      state.playerCheckableObjects = response;
+      state.isFetching = false;
+    },
+    [getPlayerCheckableObjectsAction.rejected.toString()]: isNotFetching,
+
+
+    [checkAnObjectAction.pending.toString()]: isFetching,
+    [checkAnObjectAction.fulfilled.toString()]: (state, action) => {
+      const newAllCheckableObjects = [...state.allCheckableObjects];
+      console.log(action)
+      for (let i = 0; i < newAllCheckableObjects.length; i++) {
+        if (newAllCheckableObjects[i].id == action.meta.arg.checkableObjectId) {
+          newAllCheckableObjects.splice(i, 1);
+        }
+      }
+      state.allCheckableObjects = newAllCheckableObjects;
+      state.isFetching = false;
+    },
+    [checkAnObjectAction.rejected.toString()]: isNotFetching,
 
   },
 });

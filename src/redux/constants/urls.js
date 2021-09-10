@@ -15,3 +15,8 @@ export const getProblemFromGroupUrl = ({ problemGroupId }) => `game/getproblemfr
 export const hasPlayerGotProblemUrl = ({ problemGroupId }) => `game/isproblemgotenfromgroup/${problemGroupId}/`; // todo: fix غلط املایی
 export const submitProblemUrl = ({ submitId, problemId }) => `game/submitanswer/${submitId}/${problemId}/`;
 
+
+// Game:
+export const getAllCheckableObjectsUrl = 'game/getallobjects/';
+export const getPlayerCheckableObjectsUrl = 'game/getmyobjects/';
+export const checkObjectsUrl = ({ checkableObjectId }) => `game/checkobject/${checkableObjectId}/`;
