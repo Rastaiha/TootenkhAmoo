@@ -29,11 +29,6 @@ const useStyles = makeStyles((theme) => ({
 const Index = () => {
   const classes = useStyles();
 
-  // handle resize on refresh not on login page!
-  React.useEffect(() => {
-    window.removeEventListener('resize')
-  })
-
   return (
     <>
       <Container className={classes.container}>

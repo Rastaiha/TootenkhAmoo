@@ -40,12 +40,12 @@ const App = ({
   localStorage.setItem('OneTab', Math.random())
 
   // handle refresh on resize
-  React.useEffect(() => {
-    function handleResize() {
-      window.location.reload()
-    }
-    window.addEventListener('resize', handleResize)
-  })
+  // React.useEffect(() => {
+  //   function handleResize() {
+  //     window.location.reload()
+  //   }
+  //   window.addEventListener('resize', handleResize)
+  // })
 
   const Loading = () => {
     if (isFetching) {
