@@ -81,7 +81,7 @@ function Jitsi({ player, handleClose, width, displayName = 'User' }) {
 }
 
 const mapStatesToProps = (state) => ({
-  displayName: state.account.userAccount?.first_name + ' --- ' + state.account.userAccount?.last_name,
+  // displayName: state.account.userAccount?.first_name + ' --- ' + state.account.userAccount?.last_name,
   player: state.account.player,
 });
 
