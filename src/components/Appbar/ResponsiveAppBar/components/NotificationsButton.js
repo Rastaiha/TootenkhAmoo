@@ -1,7 +1,13 @@
-import { IconButton, makeStyles, withWidth } from '@material-ui/core';
+import {
+  IconButton,
+  makeStyles,
+  Tooltip,
+  withWidth,
+} from '@material-ui/core';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import React from 'react';
 import { connect } from 'react-redux'
+
 import {
   getUserNotificationsAction,
 } from '../../../../redux/slices/account';
@@ -22,14 +28,16 @@ const Index = ({ getUserNotifications, width }) => {
 
   return (
     <>
-      <IconButton
-        className={classes.logoButton}
-        onClick={() => {
-          setOpenDialog(!openDialog);
-          getUserNotifications();
-        }}>
-        <NotificationsIcon />
-      </IconButton>
+      <Tooltip arrow title='اعلان‌ها'>
+        <IconButton
+          className={classes.logoButton}
+          onClick={() => {
+            setOpenDialog(!openDialog);
+            getUserNotifications();
+          }}>
+          <NotificationsIcon />
+        </IconButton>
+      </Tooltip>
       <Notifications
         open={openDialog}
         handleClose={() => setOpenDialog(!openDialog)}
