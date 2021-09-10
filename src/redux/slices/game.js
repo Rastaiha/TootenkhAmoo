@@ -8,44 +8,44 @@ import {
   playerExchangesUrl,
 } from '../constants/urls';
 
-export const requestProblemAction = createAsyncThunkApi(
-  'problem/requestProblemAction',
+export const getAllFamousPersonsAction = createAsyncThunkApi(
+  'game/getAllFamousPersonsAction',
   Apis.GET,
   allExchangesUrl,
   {
     defaultNotification: {
-      error: 'مشکلی در درخواستِ مسئله وجود داشت.',
+      error: 'مشکلی در گرفتن افراد مشهور وجود داشت.',
     },
   }
 );
 
 
-export const getProblemAction = createAsyncThunkApi(
-  'problem/getProblemAction',
+export const getAllCheckableObjectsAction = createAsyncThunkApi(
+  'game/getAllCheckableObjectsAction',
   Apis.GET,
   allExchangesUrl,
   {
     defaultNotification: {
-      error: 'مشکلی در دریافت مسئله وجود داشت.',
+      error: 'مشکلی در دریافت اشیای چک‌شدنی وجود داشت.',
     },
   }
 );
 
-export const submitAnswerAction = createAsyncThunkApi(
-  'problem/submitAnswerAction',
+
+export const checkAnObjectAction = createAsyncThunkApi(
+  'game/checkAnObjectAction',
   Apis.GET,
   allExchangesUrl,
   {
     defaultNotification: {
-      success: 'پاسخ شما با موفقیت ثبت شد!',
-      error: 'مشکلی در ارسال پاسخ وجود داشت.',
+      error: 'مشکلی در چک‌کردن اشیا وجود داشت.',
     },
   }
 );
 
 const initialState = {
-  allExchanges: [],
-  playerExchanges: [],
+  allFamousPersons: [],
+  allCheckableObjects: [],
 };
 
 const isFetching = (state) => {
@@ -57,22 +57,25 @@ const isNotFetching = (state) => {
 };
 
 const accountSlice = createSlice({
-  name: 'problem',
+  name: 'game',
   initialState,
   reducers: {
   },
   extraReducers: {
-    [getProblemAction.pending.toString()]: isFetching,
-    [getProblemAction.fulfilled.toString()]: (state, { payload: { response } }) => {
-      state.problem = response;
+    [getAllFamousPersonsAction.pending.toString()]: isFetching,
+    [getAllFamousPersonsAction.fulfilled.toString()]: (state, { payload: { response } }) => {
+      state.allFamousPersons = response;
       state.isFetching = false;
     },
-    [getProblemAction.rejected.toString()]: isNotFetching,
+    [getAllFamousPersonsAction.rejected.toString()]: isNotFetching,
 
 
-    [submitAnswerAction.pending.toString()]: isFetching,
-    [submitAnswerAction.fulfilled.toString()]: isNotFetching,
-    [submitAnswerAction.rejected.toString()]: isNotFetching,
+    [getAllCheckableObjectsAction.pending.toString()]: isFetching,
+    [getAllCheckableObjectsAction.fulfilled.toString()]: (state, { payload: { response } }) => {
+      state.allCheckableObjects = response;
+      state.isFetching = false;
+    },
+    [getAllCheckableObjectsAction.rejected.toString()]: isNotFetching,
 
   },
 });

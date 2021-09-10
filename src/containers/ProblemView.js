@@ -21,12 +21,12 @@ import Message from '../components/Dialog/Message';
 import TinyPreview from '../components/tiny_editor/react_tiny/Preview';
 import TinyEditor from '../components/tiny_editor/react_tiny/TinyEditorComponent';
 import {
-  submitAnswerAction,
-  getProblemFromGroupAction,
-} from '../redux/slices/problem';
-import {
   addNotificationAction,
 } from '../redux/slices/notifications';
+import {
+  getProblemFromGroupAction,
+  submitAnswerAction,
+} from '../redux/slices/problem';
 import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
@@ -77,8 +77,6 @@ const ViewProblem = ({
     }
   };
 
-  console.log(problem)
-
   const doSubmitAnswer = () => {
     if (!file?.file && !text) {
       addNotification({
@@ -87,19 +85,26 @@ const ViewProblem = ({
       });
       return;
     }
-    submitAnswer({
-      submitId,
-      problemId,
-      text,
-      file: file.file,
-    })
+
+    if (problem?.problem?.problem_type == 'DescriptiveProblem') {
+      submitAnswer({
+        submitId,
+        problemId,
+        text,
+        file: file.file,
+      })
+    } else {
+      submitAnswer({
+        submitId,
+        problemId,
+        text,
+      })
+    }
   }
 
   const clearFile = () => {
     setFile({ file: '', value: '' });
   }
-
-  console.log(doSubmitAnswer)
 
   return (
     <Layout>
