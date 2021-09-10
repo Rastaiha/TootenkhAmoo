@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import Dialog from '../../../components/Dialog/Dialog'
 
@@ -31,6 +32,7 @@ const MESSAGES = [
 
 
 const Index = () => {
+  const history = useHistory();
   const [messageNumber, setMessageNumber] = React.useState(0);
   return (
     <>
@@ -55,7 +57,10 @@ const Index = () => {
       <Dialog
         open={messageNumber == 3}
         goBackward={() => setMessageNumber(2)}
-        goForward={() => setMessageNumber(4)}
+        goForward={() => {
+          setMessageNumber(4);
+          history.push('/baygani/')
+        }}
         {...MESSAGES[3]}
       />
     </>

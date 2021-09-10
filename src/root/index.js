@@ -21,6 +21,7 @@ const Root = () => {
     <Switch>
       <PrivateRoute path="/exchange/" component={Exchange} />
       <PrivateRoute path="/baygani/:mode/" component={Baygani} />
+      <PrivateRoute path="/baygani/" component={Baygani} />
       <PrivateRoute path="/main_hall/" component={MainHall} />
       <PrivateRoute path="/greece/" component={Greece} />
       <PrivateRoute path="/iran/" component={Iran} />
