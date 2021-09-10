@@ -67,8 +67,8 @@ function Index({
             if (action.type.includes('fulfilled')) {
               history.push(`/problem/${action?.meta?.arg?.problemGroupId}/${action.payload.response.submit.id}/${action.payload.response.problem.id}/`)
             }
+            handleClose();
           });
-          handleClose();
         } else {
           setShowDialog(true);
         }
@@ -77,8 +77,12 @@ function Index({
   }, [problemGroupId])
 
   const doRequestProblem = () => {
-    getProblemFromGroup({ problemGroupId });
-    handleClose();
+    getProblemFromGroup({ problemGroupId }).then((action) => {
+      if (action.type.includes('fulfilled')) {
+        history.push(`/problem/${action?.meta?.arg?.problemGroupId}/${action.payload.response.submit.id}/${action.payload.response.problem.id}/`)
+      }
+      handleClose();
+    });
   }
 
   if (!showDialog) {
