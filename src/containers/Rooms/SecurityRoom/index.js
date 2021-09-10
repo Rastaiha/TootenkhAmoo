@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Image, Layer, Stage, Star, Text } from 'react-konva';
@@ -9,6 +10,7 @@ import URLImage from '../../../components/Konva/URLImage';
 import Layout from '../../Layout';
 import ItemImage from '../ItemImage';
 import SubmitAnswer from '../../../components/Dialog/SubmitAnswer';
+import ImageDialog from '../../../components/Dialog/Image';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -20,6 +22,8 @@ const Index = () => {
   let history = useHistory();
   const classes = useStyles();
   const [openDialog, setOpenDialog] = React.useState(false);
+  const [openDialog2, setOpenDialog2] = React.useState(false);
+
   const BACKGROUND_IMAGE = '/security_room/security-empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -31,7 +35,7 @@ const Index = () => {
       y: 1425,
       isHover: false,
       onClick: () => {
-        window.location = 'https://res.cloudinary.com/amoohashem/image/upload/v1631243595/photo5897586376763881281_zuoqjl.jpg';
+        setOpenDialog2(true);
       }
     },
     {
@@ -119,6 +123,11 @@ const Index = () => {
       <SubmitAnswer
         open={openDialog}
         handleClose={() => setOpenDialog(!openDialog)}
+      />
+      <ImageDialog
+        open={openDialog2}
+        handleClose={() => setOpenDialog2(!openDialog2)}
+        image={'/first_image.jpg'}
       />
     </Layout>
   );

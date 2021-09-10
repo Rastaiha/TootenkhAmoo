@@ -19,19 +19,19 @@ import PrivateRoute from './PrivateRoute';
 const Root = () => {
   return (
     <Switch>
-      <Route path="/exchange/" component={Exchange} />
-      <Route path="/baygani/:mode/" component={Baygani} />
-      <Route path="/main_hall/" component={MainHall} />
-      <Route path="/greece/" component={Greece} />
-      <Route path="/iran/" component={Iran} />
-      <Route path="/egypt/" component={Egypt} />
-      <Route path="/japan/" component={Japan} />
-      <Route path="/viking/" component={Viking} />
-      <Route path="/security_room/" component={SecurityRoom} />
-      <Route path="/rahro/" component={Rahro} />
-      <Route path="/mashahir/" component={Mashahir} />
+      <PrivateRoute path="/exchange/" component={Exchange} />
+      <PrivateRoute path="/baygani/:mode/" component={Baygani} />
+      <PrivateRoute path="/main_hall/" component={MainHall} />
+      <PrivateRoute path="/greece/" component={Greece} />
+      <PrivateRoute path="/iran/" component={Iran} />
+      <PrivateRoute path="/egypt/" component={Egypt} />
+      <PrivateRoute path="/japan/" component={Japan} />
+      <PrivateRoute path="/viking/" component={Viking} />
+      <PrivateRoute path="/security_room/" component={SecurityRoom} />
+      <PrivateRoute path="/rahro/" component={Rahro} />
+      <PrivateRoute path="/mashahir/" component={Mashahir} />
+      <PrivateRoute path="/problem/:problemGroupId/:submitId/:problemId/" component={ProblemView} />
       <Route path="/login/" component={Login} />
-      <Route path="/problem/:problemGroupId/:submitId/:problemId/" component={ProblemView} />
       <Route path="/" component={Login} />
       <Route path="*" render={() => <Redirect to={{ pathname: '/' }} />} />
     </Switch>
