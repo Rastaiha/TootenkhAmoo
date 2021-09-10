@@ -207,6 +207,7 @@ const ViewProblem = ({
           </Grid>
         </Grid >
         <Message
+          image={'/characters/moom-happy.png'}
           open={openDialog}
           text={'آیا مطمئنید که می‌خواهید پاسخ مسئله را ارسال کنید؟ شما فقط یک‌بار امکان این کار را دارید!'}
           handleClose={() => { setOpenDialog(!openDialog) }}

@@ -50,6 +50,7 @@ function Index({
   getProblemFromGroup,
   hasPlayerGotProblem,
 
+  text,
   problemGroupId,
   image: inputImage,
   open,
@@ -100,7 +101,7 @@ function Index({
         <Grid container component={Paper} direction='column' spacing={2} justify='center'>
           <Grid item>
             <Typography>
-              {'آیا مطمئنید؟ برای گرفتن سوال ۱۰۰۰ سکه از شما کسر می‌شود. توجه کنید که جادوگر و گربه‌اش با کسی شوخی ندارند و پس از پرداخت سکه، دیگر امکان پس‌گرفتن آن را ندارید!'}
+              {text || 'آیا مطمئنید؟ برای گرفتن سوال ۱۰۰۰ سکه از شما کسر می‌شود. توجه کنید که جادوگر و گربه‌اش با کسی شوخی ندارند و پس از پرداخت سکه، دیگر امکان پس‌گرفتن آن را ندارید!'}
             </Typography>
           </Grid>
           <Grid item container justify='center' alignItems='center'>

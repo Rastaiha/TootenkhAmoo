@@ -20,15 +20,15 @@ const Index = () => {
   const classes = useStyles();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [groupProblemId, setGroupProblemId] = React.useState();
-  const BACKGROUND_IMAGE = '/iran/iran room - empty.png';
+  const BACKGROUND_IMAGE = '/iran/empty-room.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
     {
-      urlImage: process.env.PUBLIC_URL + '/iran/3 frames.png',
-      id: 0,
-      x: 1193,
-      y: 160,
+      urlImage: process.env.PUBLIC_URL + '/iran/frame1.png',
+      id: 300,
+      x: 1010,
+      y: 120,
       isHover: false,
       onClick: () => {
         setGroupProblemId(39);
@@ -36,10 +36,10 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/iran/3 frames.png',
+      urlImage: process.env.PUBLIC_URL + '/iran/frame2.png',
       id: 0,
-      x: 1193,
-      y: 160,
+      x: 1202,
+      y: 220,
       isHover: false,
       onClick: () => {
         setGroupProblemId(40);
@@ -47,10 +47,10 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/iran/3 frames.png',
-      id: 0,
-      x: 1193,
-      y: 160,
+      urlImage: process.env.PUBLIC_URL + '/iran/frame3.png',
+      id: 100,
+      x: 1395,
+      y: 120,
       isHover: false,
       onClick: () => {
         setGroupProblemId(25);

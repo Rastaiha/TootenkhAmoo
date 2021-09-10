@@ -30,7 +30,10 @@ const Index = () => {
       x: 395,
       y: 390,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(10);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/maraghei p.png',
@@ -38,7 +41,10 @@ const Index = () => {
       x: 395,
       y: 175,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(13);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/soorena p.png',
@@ -46,7 +52,10 @@ const Index = () => {
       x: 733,
       y: 300,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(12);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/farabi p.png',
@@ -54,7 +63,10 @@ const Index = () => {
       x: 544,
       y: 608,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(30);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/mollasadra p.png',
@@ -62,7 +74,10 @@ const Index = () => {
       x: 930,
       y: 608,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(15);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vahshi p.png',
@@ -70,7 +85,10 @@ const Index = () => {
       x: 1085,
       y: 265,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(14);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz.png',
@@ -79,7 +97,10 @@ const Index = () => {
       y: 470,
       isHover: false,
       disabled: true,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(42);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/beyzayi p.png',
@@ -87,7 +108,10 @@ const Index = () => {
       x: 1860,
       y: 265,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(32);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/rastaranj p.png',
@@ -95,7 +119,10 @@ const Index = () => {
       x: 2206,
       y: 306,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(34);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/khaleghi p.png',
@@ -103,7 +130,10 @@ const Index = () => {
       x: 2530,
       y: 283,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(11);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vafa p.png',
@@ -111,7 +141,10 @@ const Index = () => {
       x: 1867,
       y: 565,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(21);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/sadeghi p.png',
@@ -119,7 +152,10 @@ const Index = () => {
       x: 2206,
       y: 600,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(33);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/loris p.png',
@@ -127,7 +163,10 @@ const Index = () => {
       x: 2530,
       y: 565,
       isHover: false,
-      onClick: () => { },
+      onClick: () => {
+        setGroupProblemId(16);
+        setOpenDialog(true);
+      },
     },
   ]);
 
@@ -193,6 +232,7 @@ const Index = () => {
         </Layer>
       </Stage>
       <GetProblem
+        text={'آیا مطمئنید؟ البته نگران نباشید، برای گرفتن سوال در تالار مشاهیر احتیاجی به پرداخت سکه نیست!'}
         open={openDialog}
         handleClose={() => setOpenDialog(!openDialog)}
         problemGroupId={groupProblemId}

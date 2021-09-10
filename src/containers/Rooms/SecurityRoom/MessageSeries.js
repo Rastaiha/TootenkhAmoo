@@ -33,6 +33,12 @@ const MESSAGES = [
     leftButtonText: 'قبلی',
     image: '/characters/moom-posht.png',
   },
+  {
+    text: '.',
+    rightButtonText: 'حله!',
+    leftButtonText: 'قبلی',
+    image: '/characters/moom-posht.png',
+  },
 ]
 
 
