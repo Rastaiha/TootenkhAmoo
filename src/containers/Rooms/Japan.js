@@ -107,7 +107,7 @@ const Index = () => {
   };
 
   return (
-    <Layout>
+    <Layout backgroundImage={BACKGROUND_IMAGE}>
       <Stage
         width={Math.min(image?.width * scaleY, window.innerWidth)}
         height={window.innerHeight}>

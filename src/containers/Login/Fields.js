@@ -33,7 +33,7 @@ const InputFields = ({
 
   if (token) {
     return (
-      <Redirect to='/game/' />
+      <Redirect to='/security_room/' />
     );
   }
 
@@ -69,6 +69,7 @@ const InputFields = ({
     <>
       <Grid item>
         <TextField
+          autoComplete="on"
           variant='outlined'
           fullWidth
           onChange={(e) => {
@@ -86,6 +87,7 @@ const InputFields = ({
 
       <Grid item>
         <TextField
+          autoComplete="on"
           variant='outlined'
           fullWidth
           onChange={putData}

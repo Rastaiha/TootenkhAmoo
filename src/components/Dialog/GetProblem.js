@@ -68,6 +68,7 @@ function Index({
               history.push(`/problem/${action?.meta?.arg?.problemGroupId}/${action.payload.response.submit.id}/${action.payload.response.problem.id}/`)
             }
           });
+          handleClose();
         } else {
           setShowDialog(true);
         }

@@ -4,18 +4,20 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
   Paper,
+  Typography,
 } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { useParams } from 'react-router';
 
 import {
-  getPlayerCheckableObjectsAction,
   getAllCheckableObjectsAction,
+  getPlayerCheckableObjectsAction,
 } from '../../../redux/slices/game';
 import Layout from '../../Layout';
+import MessageSeries from '../Baygani/MessageSeries';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -49,6 +51,7 @@ const Index = ({
   getAllCheckableObjects,
   getPlayerCheckableObjects,
 }) => {
+  const { mode } = useParams();
   const history = useHistory();
   const BACKGROUND_IMAGE = '/backgrounds/baygani.jpg';
   const [tabIndex, setTabIndex] = React.useState(0);
@@ -101,6 +104,9 @@ const Index = ({
           </Grid>
         </Grid>
       </Container>
+      {mode == 'start' &&
+        <MessageSeries />
+      }
     </Layout>
   );
 };

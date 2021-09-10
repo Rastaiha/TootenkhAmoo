@@ -1,15 +1,20 @@
 import {
-  makeStyles,
-  Grid,
-  ButtonGroup,
-  Paper,
   Button,
+  ButtonGroup,
   Container,
+  Grid,
+  makeStyles,
+  Paper,
 } from '@material-ui/core';
 import React from 'react';
+import { useParams } from 'react-router';
 import { useHistory } from "react-router-dom";
 
 import Layout from '../../Layout';
+import AllExchanges from './AllExchanges';
+import CreateNewExchange from './CreateNewExchange';
+import PlayerExchanges from './PlayerExchanges';
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -24,9 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-import AllExchanges from './AllExchanges';
-import PlayerExchanges from './PlayerExchanges';
-import CreateNewExchange from './CreateNewExchange';
 
 const tabs = [
   {
@@ -46,6 +48,7 @@ const tabs = [
 
 
 const Index = () => {
+  const { mode } = useParams()
   const BACKGROUND_IMAGE = '/backgrounds/baygani.jpg';
   const [tabIndex, setTabIndex] = React.useState(0);
   const classes = useStyles();

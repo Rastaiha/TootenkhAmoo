@@ -20,7 +20,7 @@ const Root = () => {
   return (
     <Switch>
       <Route path="/exchange/" component={Exchange} />
-      <Route path="/baygani/" component={Baygani} />
+      <Route path="/baygani/:mode/" component={Baygani} />
       <Route path="/main_hall/" component={MainHall} />
       <Route path="/greece/" component={Greece} />
       <Route path="/iran/" component={Iran} />

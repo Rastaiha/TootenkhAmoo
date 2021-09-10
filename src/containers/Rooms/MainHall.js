@@ -43,7 +43,7 @@ const Index = () => {
       x: 2120,
       y: 1790,
       isHover: false,
-      onClick: () => goForward('/iran/"'),
+      onClick: () => goForward('/iran/'),
     },
     {
       urlImage: process.env.PUBLIC_URL + '/mainhall/Japan.png',

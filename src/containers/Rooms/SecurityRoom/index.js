@@ -8,6 +8,7 @@ import MessageSeries from './MessageSeries';
 import URLImage from '../../../components/Konva/URLImage';
 import Layout from '../../Layout';
 import ItemImage from '../ItemImage';
+import SubmitAnswer from '../../../components/Dialog/SubmitAnswer';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = React.useState(false);
   const BACKGROUND_IMAGE = '/security_room/security-empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -28,7 +30,9 @@ const Index = () => {
       x: 605,
       y: 1425,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        window.location = 'https://res.cloudinary.com/amoohashem/image/upload/v1631243595/photo5897586376763881281_zuoqjl.jpg';
+      }
     },
     {
       urlImage: process.env.PUBLIC_URL + '/security_room/komod.png',
@@ -36,7 +40,9 @@ const Index = () => {
       x: 2200,
       y: 680,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/security_room/Tablo.png',
@@ -44,7 +50,7 @@ const Index = () => {
       x: 319,
       y: 1013,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
   ]);
 
@@ -110,6 +116,10 @@ const Index = () => {
         </Layer>
       </Stage>
       <MessageSeries />
+      <SubmitAnswer
+        open={openDialog}
+        handleClose={() => setOpenDialog(!openDialog)}
+      />
     </Layout>
   );
 };

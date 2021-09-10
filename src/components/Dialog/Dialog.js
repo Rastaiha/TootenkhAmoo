@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: '100%',
-    maxWidth: '400px',
-    maxHeight: '400px',
+    maxWidth: '350px',
+    maxHeight: '350px',
     objectFit: 'contain',
     [theme.breakpoints.down('xs')]: {
       maxWidth: '250px',
