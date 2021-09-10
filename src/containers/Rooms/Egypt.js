@@ -4,6 +4,7 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
+import GetProblem from '../../components/Dialog/GetProblem'
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
@@ -17,6 +18,8 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [groupProblemId, setGroupProblemId] = React.useState();
   const BACKGROUND_IMAGE = '/egypt/egypt room - empty 2.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -27,7 +30,10 @@ const Index = () => {
       x: 1078,
       y: 503,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(23);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/egypt/harp.png',
@@ -35,7 +41,10 @@ const Index = () => {
       x: 490,
       y: 680,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(19);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/egypt/pharaoh.png',
@@ -43,7 +52,10 @@ const Index = () => {
       x: 1325,
       y: 480,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(7);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/egypt/pyramids.png',
@@ -51,7 +63,10 @@ const Index = () => {
       x: 805,
       y: 600,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(22);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/egypt/egypt frame 2.png',
@@ -59,7 +74,8 @@ const Index = () => {
       x: 715,
       y: 225,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      disabled: true,
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/egypt/door.png',
@@ -67,7 +83,8 @@ const Index = () => {
       x: 165,
       y: 750,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      disabled: true,
+      onClick: () => { },
     },
   ]);
 
@@ -133,6 +150,11 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
+      <GetProblem
+        open={openDialog}
+        handleClose={() => setOpenDialog(!openDialog)}
+        problemGroupId={groupProblemId}
+      />
     </Layout>
   );
 };

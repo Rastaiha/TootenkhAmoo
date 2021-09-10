@@ -31,7 +31,29 @@ const Index = () => {
       y: 160,
       isHover: false,
       onClick: () => {
-        setGroupProblemId(1);
+        setGroupProblemId(39);
+        setOpenDialog(true);
+      },
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/iran/3 frames.png',
+      id: 0,
+      x: 1193,
+      y: 160,
+      isHover: false,
+      onClick: () => {
+        setGroupProblemId(40);
+        setOpenDialog(true);
+      },
+    },
+    {
+      urlImage: process.env.PUBLIC_URL + '/iran/3 frames.png',
+      id: 0,
+      x: 1193,
+      y: 160,
+      isHover: false,
+      onClick: () => {
+        setGroupProblemId(25);
         setOpenDialog(true);
       },
     },
@@ -42,7 +64,7 @@ const Index = () => {
       y: 567,
       isHover: false,
       onClick: () => {
-        setGroupProblemId(1);
+        setGroupProblemId(9);
         setOpenDialog(true);
       },
     },
@@ -53,7 +75,7 @@ const Index = () => {
       y: 525,
       isHover: false,
       onClick: () => {
-        setGroupProblemId(1);
+        setGroupProblemId(20);
         setOpenDialog(true);
       },
     },
@@ -64,7 +86,7 @@ const Index = () => {
       y: 540,
       isHover: false,
       onClick: () => {
-        setGroupProblemId(1);
+        setGroupProblemId(5);
         setOpenDialog(true);
       },
     },
@@ -75,7 +97,7 @@ const Index = () => {
       y: 480,
       isHover: false,
       onClick: () => {
-        setGroupProblemId(1);
+        setGroupProblemId(24);
         setOpenDialog(true);
       },
     },
@@ -85,10 +107,8 @@ const Index = () => {
       x: 158,
       y: 745,
       isHover: false,
-      onClick: () => {
-        setGroupProblemId(1);
-        setOpenDialog(true);
-      },
+      disabled: true,
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/iran/iran frame.png',
@@ -96,10 +116,8 @@ const Index = () => {
       x: 420,
       y: 225,
       isHover: false,
-      onClick: () => {
-        setGroupProblemId(1);
-        setOpenDialog(true);
-      },
+      disabled: true,
+      onClick: () => { },
     },
   ]);
 

@@ -4,6 +4,7 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
+import GetProblem from '../../components/Dialog/GetProblem'
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
@@ -17,6 +18,8 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [groupProblemId, setGroupProblemId] = React.useState();
   const BACKGROUND_IMAGE = '/japan/japan room - empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -27,7 +30,10 @@ const Index = () => {
       x: 1005,
       y: 638,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(17);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/japan/chance cat.png',
@@ -35,7 +41,10 @@ const Index = () => {
       x: 380,
       y: 550,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(8);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/japan/cherry blossom vase.png',
@@ -43,7 +52,10 @@ const Index = () => {
       x: 710,
       y: 470,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(37);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/japan/dragon.png',
@@ -51,7 +63,10 @@ const Index = () => {
       x: 240,
       y: 230,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(35);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/japan/katana.png',
@@ -59,7 +74,10 @@ const Index = () => {
       x: 130,
       y: 698,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(18);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/japan/japan frame.png',
@@ -140,6 +158,11 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
+      <GetProblem
+        open={openDialog}
+        handleClose={() => setOpenDialog(!openDialog)}
+        problemGroupId={groupProblemId}
+      />
     </Layout>
   );
 };

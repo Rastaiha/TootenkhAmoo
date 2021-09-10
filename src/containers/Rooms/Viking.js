@@ -4,6 +4,7 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
+import GetProblem from '../../components/Dialog/GetProblem'
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
@@ -17,7 +18,9 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
-  const BACKGROUND_IMAGE = '/viking/viking room - empty.png';
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [groupProblemId, setGroupProblemId] = React.useState();
+  const BACKGROUND_IMAGE = '/viking/empty-room.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
@@ -27,7 +30,10 @@ const Index = () => {
       x: 1238,
       y: 278,
       isHover: false,
-      onClick: () => goForward('/problem/1'),
+      onClick: () => {
+        setGroupProblemId(3);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/viking/horn.png',
@@ -35,7 +41,10 @@ const Index = () => {
       x: 380,
       y: 540,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(27);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/viking/hat.png',
@@ -43,7 +52,10 @@ const Index = () => {
       x: 975,
       y: 515,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(28);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/viking/ship.png',
@@ -51,7 +63,10 @@ const Index = () => {
       x: 680,
       y: 545,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(29);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/viking/door.png',
@@ -59,7 +74,8 @@ const Index = () => {
       x: 1335,
       y: 745,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      disabled: true,
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/viking/viking frame.png',
@@ -67,7 +83,8 @@ const Index = () => {
       x: 250,
       y: 240,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      disabled: true,
+      onClick: () => { },
     },
   ]);
 
@@ -133,6 +150,11 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
+      <GetProblem
+        open={openDialog}
+        handleClose={() => setOpenDialog(!openDialog)}
+        problemGroupId={groupProblemId}
+      />
     </Layout>
   );
 };

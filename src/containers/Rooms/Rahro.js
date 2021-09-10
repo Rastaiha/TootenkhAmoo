@@ -4,6 +4,7 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
+import GetProblem from '../../components/Dialog/GetProblem'
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
@@ -17,6 +18,8 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [groupProblemId, setGroupProblemId] = React.useState();
   const BACKGROUND_IMAGE = '/Rahro/Rahro-Empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -108,6 +111,11 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
+      <GetProblem
+        open={openDialog}
+        handleClose={() => setOpenDialog(!openDialog)}
+        problemGroupId={groupProblemId}
+      />
     </Layout>
   );
 };
