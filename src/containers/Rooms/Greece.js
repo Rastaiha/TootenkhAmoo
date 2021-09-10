@@ -4,6 +4,7 @@ import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
+import GetProblem from '../../components/Dialog/GetProblem'
 import URLImage from '../../components/Konva/URLImage';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
@@ -17,6 +18,8 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   let history = useHistory();
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [groupProblemId, setGroupProblemId] = React.useState();
   const BACKGROUND_IMAGE = '/greece/greece room - empty.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
@@ -27,7 +30,10 @@ const Index = () => {
       x: 144,
       y: 428,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(3);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/greece/olive.png',
@@ -35,7 +41,10 @@ const Index = () => {
       x: 410,
       y: 560,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(21);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/greece/olympics.png',
@@ -43,7 +52,10 @@ const Index = () => {
       x: 400,
       y: 200,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(16);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/greece/scales.png',
@@ -51,7 +63,10 @@ const Index = () => {
       x: 948,
       y: 515,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(38);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/greece/vase.png',
@@ -59,13 +74,17 @@ const Index = () => {
       x: 680,
       y: 480,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(2);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/greece/door.png',
       id: 6,
       x: 1338,
       y: 748,
+      disabled: true,
       isHover: false,
       onClick: () => goForward('/folan1'),
     },
@@ -74,6 +93,7 @@ const Index = () => {
       id: 7,
       x: 1230,
       y: 235,
+      disabled: true,
       isHover: false,
       onClick: () => goForward('/folan1'),
     },
@@ -140,6 +160,11 @@ const Index = () => {
           ))}
         </Layer>
       </Stage>
+      <GetProblem
+        open={openDialog}
+        handleClose={() => setOpenDialog(!openDialog)}
+        problemGroupId={groupProblemId}
+      />
     </Layout>
   );
 };

@@ -14,7 +14,7 @@ export const loginAction = createAsyncThunkApi(
   loginUrl,
   {
     defaultNotification: {
-      success: 'دوباره سلام!',
+      success: 'سلام!',
       error: 'نام کاربری یا رمز عبورت اشتباهه!',
     },
   }

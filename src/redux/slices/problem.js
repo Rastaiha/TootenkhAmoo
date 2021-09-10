@@ -12,11 +12,6 @@ export const hasPlayerGotProblemAction = createAsyncThunkApi(
   'problem/hasPlayerGotProblemAction',
   Apis.POST,
   hasPlayerGotProblemUrl,
-  {
-    defaultNotification: {
-      error: 'مشکلی در بررسی گرفتن یا نگرفتن مسئله توسط بازیکن وجود داشت.',
-    },
-  }
 );
 
 

@@ -28,10 +28,10 @@ const Index = ({
       shadowColor="black"
       shadowBlur={10}
       shadowOpacity={0.6}
-      shadowOffsetX={object.isHover ? 10 : 5}
-      shadowOffsetY={object.isHover ? 10 : 5}
-      scaleX={object.isHover ? scale + 0.03 : scale}
-      scaleY={object.isHover ? scale + 0.03 : scale}
+      shadowOffsetX={(object.isHover && !object.disabled) ? 10 : 5}
+      shadowOffsetY={(object.isHover && !object.disabled) ? 10 : 5}
+      scaleX={(object.isHover && !object.disabled) ? scale + 0.03 : scale}
+      scaleY={(object.isHover && !object.disabled) ? scale + 0.03 : scale}
 
       onTap={(e) => {
         handleMouseEnter(e);

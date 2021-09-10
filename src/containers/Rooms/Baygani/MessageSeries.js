@@ -22,16 +22,10 @@ const MESSAGES = [
     image: '/characters/moom-chibegamvalla.png',
   },
   {
-    text: 'هروقت توت کافی پیدا کردید می‌تونید بیاید تا براتون یکی از این اشیا رو چک کنم ببینم واکسنی توش هست یا نه. اگرم موفق بشید جسد منو پیدا کنید برام معادل ۲۰ تا توت سیاه و ۲۰ تا آبی و ۲۰ تا قرمز می‌ارزه. براتون بقیه این شیئا رم چک می‌کنم',
+    text: 'هروقت توت کافی پیدا کردید می‌تونید بیاید تا براتون یکی از این اشیا رو چک کنم ببینم واکسنی توش هست یا نه. اگرم موفق بشید جسد منو پیدا کنید برام معادل ۲۵ تا توت سیاه و ۲۵ تا آبی و ۲۵ تا قرمز می‌ارزه. براتون بقیه این شیئا رم چک می‌کنم',
     rightButtonText: 'بعدی',
     leftButtonText: 'قبلی',
     image: '/characters/moom-happy.png',
-  },
-  {
-    text: 'جادوگره و گربه ش هروقت که میزنن رو معماهای پنج تا اتاق میان می گن باید هزار تا سکه پول بدن، روی در سردابا می زنن می گن باید ۷۵۰۰ تا پول بدن (سردابا همشون پوچن).',
-    rightButtonText: 'حله!',
-    leftButtonText: 'قبلی',
-    image: '/characters/moom-chibegamvalla.png',
   },
 ]
 
@@ -63,12 +57,6 @@ const Index = () => {
         goBackward={() => setMessageNumber(2)}
         goForward={() => setMessageNumber(4)}
         {...MESSAGES[3]}
-      />
-      <Dialog
-        open={messageNumber == 4}
-        goBackward={() => setMessageNumber(3)}
-        goForward={() => setMessageNumber(5)}
-        {...MESSAGES[4]}
       />
     </>
   );

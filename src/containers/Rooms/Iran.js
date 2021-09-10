@@ -41,7 +41,10 @@ const Index = () => {
       x: 483,
       y: 567,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(1);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/iran/koozeye boz.png',
@@ -49,7 +52,10 @@ const Index = () => {
       x: 1295,
       y: 525,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(1);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/iran/minakari.png',
@@ -57,7 +63,10 @@ const Index = () => {
       x: 1025,
       y: 540,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(1);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/iran/pasargad.png',
@@ -65,7 +74,10 @@ const Index = () => {
       x: 768,
       y: 480,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(1);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/iran/door.png',
@@ -73,7 +85,10 @@ const Index = () => {
       x: 158,
       y: 745,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(1);
+        setOpenDialog(true);
+      },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/iran/iran frame.png',
@@ -81,7 +96,10 @@ const Index = () => {
       x: 420,
       y: 225,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => {
+        setGroupProblemId(1);
+        setOpenDialog(true);
+      },
     },
   ]);
 

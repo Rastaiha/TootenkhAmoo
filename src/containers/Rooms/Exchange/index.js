@@ -7,7 +7,6 @@ import {
   Paper,
 } from '@material-ui/core';
 import React from 'react';
-import { useParams } from 'react-router';
 import { useHistory } from "react-router-dom";
 
 import Layout from '../../Layout';
@@ -48,7 +47,7 @@ const tabs = [
 
 
 const Index = () => {
-  const { mode } = useParams()
+  const { mode } = React.useParams()
   const BACKGROUND_IMAGE = '/backgrounds/baygani.jpg';
   const [tabIndex, setTabIndex] = React.useState(0);
   const classes = useStyles();
