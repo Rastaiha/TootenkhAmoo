@@ -20,7 +20,7 @@ const Index = () => {
   const classes = useStyles();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [groupProblemId, setGroupProblemId] = React.useState();
-  const BACKGROUND_IMAGE = '/greece/greece room - empty.png';
+  const BACKGROUND_IMAGE = '/greece/empty-room.png';
   const [image] = useImage(process.env.PUBLIC_URL + BACKGROUND_IMAGE);
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
@@ -86,7 +86,7 @@ const Index = () => {
       y: 748,
       disabled: true,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/greece/greece frame.png',
@@ -95,7 +95,7 @@ const Index = () => {
       y: 235,
       disabled: true,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
   ]);
 
