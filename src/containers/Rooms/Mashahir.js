@@ -30,7 +30,7 @@ const Index = () => {
       x: 395,
       y: 390,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/maraghei p.png',
@@ -38,7 +38,7 @@ const Index = () => {
       x: 395,
       y: 175,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/soorena p.png',
@@ -46,7 +46,7 @@ const Index = () => {
       x: 733,
       y: 300,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/farabi p.png',
@@ -54,7 +54,7 @@ const Index = () => {
       x: 544,
       y: 608,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/mollasadra p.png',
@@ -62,7 +62,7 @@ const Index = () => {
       x: 930,
       y: 608,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vahshi p.png',
@@ -70,7 +70,7 @@ const Index = () => {
       x: 1085,
       y: 265,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz.png',
@@ -79,9 +79,7 @@ const Index = () => {
       y: 470,
       isHover: false,
       disabled: true,
-      onClick: () => {
-
-      },
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/beyzayi p.png',
@@ -89,7 +87,7 @@ const Index = () => {
       x: 1860,
       y: 265,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/rastaranj p.png',
@@ -97,7 +95,7 @@ const Index = () => {
       x: 2206,
       y: 306,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/khaleghi p.png',
@@ -105,7 +103,7 @@ const Index = () => {
       x: 2530,
       y: 283,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vafa p.png',
@@ -113,7 +111,7 @@ const Index = () => {
       x: 1867,
       y: 565,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/sadeghi p.png',
@@ -121,7 +119,7 @@ const Index = () => {
       x: 2206,
       y: 600,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/loris p.png',
@@ -129,7 +127,7 @@ const Index = () => {
       x: 2530,
       y: 565,
       isHover: false,
-      onClick: () => goForward('/folan1'),
+      onClick: () => { },
     },
   ]);
 
