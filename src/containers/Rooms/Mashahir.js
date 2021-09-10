@@ -1,11 +1,15 @@
 import { Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Image, Layer, Stage, Star, Text } from 'react-konva';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
 import GetProblem from '../../components/Dialog/GetProblem'
 import URLImage from '../../components/Konva/URLImage';
+import {
+  getAllFamousPersonsAction,
+} from '../../redux/slices/game';
 import Layout from '../Layout';
 import ItemImage from './ItemImage';
 
@@ -15,7 +19,22 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Index = () => {
+const Index = ({
+  getAllFamousPersons,
+  allFamousPersons,
+}) => {
+  React.useEffect(() => {
+    getAllFamousPersons();
+  }, [])
+
+  const check = (id) => {
+    for (const person of allFamousPersons) {
+      console.log(person.id)
+      if (person.id == id) return true;
+    }
+    return false
+  }
+
   let history = useHistory();
   const classes = useStyles();
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -25,8 +44,9 @@ const Index = () => {
   const scaleY = window.innerHeight / image?.height;
   const [objects, setObjects] = React.useState([
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/araghi p.png',
-      id: 0,
+      urlImage: process.env.PUBLIC_URL +
+        (check(1) ? '/Mashahir/Normal/araghi.png' : '/Mashahir/Pixelized/araghi p.png'),
+      id: 1,
       x: 395,
       y: 390,
       isHover: false,
@@ -36,8 +56,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/maraghei p.png',
-      id: 1,
+      urlImage: process.env.PUBLIC_URL +
+        (check(4) ? '/Mashahir/Normal/maraghei.png' : '/Mashahir/Pixelized/maraghei p.png'),
+      id: 4,
       x: 395,
       y: 175,
       isHover: false,
@@ -47,8 +68,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/soorena p.png',
-      id: 2,
+      urlImage: process.env.PUBLIC_URL +
+        (check(3) ? '/Mashahir/Normal/soorena.png' : '/Mashahir/Pixelized/soorena p.png'),
+      id: 3,
       x: 733,
       y: 300,
       isHover: false,
@@ -58,8 +80,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/farabi p.png',
-      id: 3,
+      urlImage: process.env.PUBLIC_URL +
+        (check(8) ? '/Mashahir/Normal/farabi.png' : '/Mashahir/Pixelized/farabi p.png'),
+      id: 8,
       x: 544,
       y: 608,
       isHover: false,
@@ -69,8 +92,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/mollasadra p.png',
-      id: 4,
+      urlImage: process.env.PUBLIC_URL +
+        (check(6) ? '/Mashahir/Normal/mollasadra.png' : '/Mashahir/Pixelized/mollasadra p.png'),
+      id: 6,
       x: 930,
       y: 608,
       isHover: false,
@@ -80,7 +104,8 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vahshi p.png',
+      urlImage: process.env.PUBLIC_URL +
+        (check(5) ? '/Mashahir/Normal/vahshi.png' : '/Mashahir/Pixelized/vahshi p.png'),
       id: 5,
       x: 1085,
       y: 265,
@@ -92,7 +117,7 @@ const Index = () => {
     },
     {
       urlImage: process.env.PUBLIC_URL + '/Mashahir/Howz.png',
-      id: 6,
+      id: 60,
       x: 1460,
       y: 470,
       isHover: false,
@@ -103,8 +128,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/beyzayi p.png',
-      id: 7,
+      urlImage: process.env.PUBLIC_URL +
+        (check(10) ? '/Mashahir/Normal/beyzayi.png' : '/Mashahir/Pixelized/beyzayi p.png'),
+      id: 10,
       x: 1860,
       y: 265,
       isHover: false,
@@ -114,8 +140,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/rastaranj p.png',
-      id: 8,
+      urlImage: process.env.PUBLIC_URL +
+        (check(12) ? '/Mashahir/Normal/rastaranj.png' : '/Mashahir/Pixelized/rastaranj p.png'),
+      id: 12,
       x: 2206,
       y: 306,
       isHover: false,
@@ -125,8 +152,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/khaleghi p.png',
-      id: 9,
+      urlImage: process.env.PUBLIC_URL +
+        (check(2) ? '/Mashahir/Normal/khaleghi.png' : '/Mashahir/Pixelized/khaleghi p.png'),
+      id: 2,
       x: 2530,
       y: 283,
       isHover: false,
@@ -136,8 +164,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/vafa p.png',
-      id: 10,
+      urlImage: process.env.PUBLIC_URL +
+        (check(9) ? '/Mashahir/Normal/vafa.png' : '/Mashahir/Pixelized/vafa p.png'),
+      id: 9,
       x: 1867,
       y: 565,
       isHover: false,
@@ -147,7 +176,8 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/sadeghi p.png',
+      urlImage: process.env.PUBLIC_URL +
+        (check(11) ? '/Mashahir/Normal/sadeghi.png' : '/Mashahir/Pixelized/sadeghi p.png'),
       id: 11,
       x: 2206,
       y: 600,
@@ -158,8 +188,9 @@ const Index = () => {
       },
     },
     {
-      urlImage: process.env.PUBLIC_URL + '/Mashahir/Pixelized/loris p.png',
-      id: 12,
+      urlImage: process.env.PUBLIC_URL +
+        (check(7) ? '/Mashahir/Normal/loris.png' : '/Mashahir/Pixelized/loris p.png'),
+      id: 7,
       x: 2530,
       y: 565,
       isHover: false,
@@ -169,6 +200,7 @@ const Index = () => {
       },
     },
   ]);
+
 
   const goForward = (dst) => {
     history.push(dst);
@@ -241,4 +273,13 @@ const Index = () => {
   );
 };
 
-export default Index;
+const mapStateToProps = (state) => ({
+  allFamousPersons: state.game.allFamousPersons,
+})
+
+export default connect(
+  mapStateToProps,
+  {
+    getAllFamousPersons: getAllFamousPersonsAction,
+  }
+)(Index);

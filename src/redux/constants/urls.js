@@ -20,3 +20,5 @@ export const submitProblemUrl = ({ submitId, problemId }) => `game/submitanswer/
 export const getAllCheckableObjectsUrl = 'game/getallobjects/';
 export const getPlayerCheckableObjectsUrl = 'game/getmyobjects/';
 export const checkObjectsUrl = ({ checkableObjectId }) => `game/checkobject/${checkableObjectId}/`;
+export const getFamousPersonUrl = 'game/getfamousepersons/';
+

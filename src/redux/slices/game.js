@@ -3,16 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Apis } from '../apis';
 import { createAsyncThunkApi } from '../apis/cerateApiAsyncThunk';
 import {
-  allExchangesUrl,
   checkObjectsUrl,
   getAllCheckableObjectsUrl,
+  getFamousPersonUrl,
   getPlayerCheckableObjectsUrl,
 } from '../constants/urls';
 
 export const getAllFamousPersonsAction = createAsyncThunkApi(
   'game/getAllFamousPersonsAction',
   Apis.GET,
-  allExchangesUrl,
+  getFamousPersonUrl,
   {
     defaultNotification: {
       error: 'مشکلی در گرفتن افراد مشهور وجود داشت.',
