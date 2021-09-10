@@ -64,8 +64,8 @@ const App = ({
     <IntlProvider translations={translations}>
       {dir === 'rtl' ? (
         <ThemeProvider theme={RTLMuiTheme}>
-          <Loading />
           <StylesProvider jss={jss}>
+            <Loading />
             <ArticleApp />
           </StylesProvider>
         </ThemeProvider>

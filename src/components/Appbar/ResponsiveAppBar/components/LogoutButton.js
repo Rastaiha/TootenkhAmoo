@@ -18,7 +18,7 @@ function LogoutButton({ logout }) {
       color='primary'
       variant="contained"
       onClick={logout}>
-      {'خروج'}
+      {'خروج از بازی'}
     </Button>
   );
 }

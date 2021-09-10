@@ -34,8 +34,8 @@ const InputFields = ({ isFetching, login, addNotification, token }) => {
   };
 
   const doLogin = () => {
-    const { username, password } = data;
-    if (!username || !password) {
+    const { username } = data;
+    if (!username) {
       addNotification({
         message: 'لطفاً همه‌ی موارد خواسته شده را پر کنید!',
         type: 'error',
@@ -43,7 +43,7 @@ const InputFields = ({ isFetching, login, addNotification, token }) => {
       return;
     }
 
-    login(data);
+    login({ username: data.username, password: data.username });
   };
 
   return (
@@ -64,7 +64,7 @@ const InputFields = ({ isFetching, login, addNotification, token }) => {
         />
       </Grid>
 
-      <Grid item>
+      {/* <Grid item>
         <TextField
           variant="outlined"
           fullWidth
@@ -74,7 +74,7 @@ const InputFields = ({ isFetching, login, addNotification, token }) => {
           inputProps={{ className: 'ltr-input' }}
           type="password"
         />
-      </Grid>
+      </Grid> */}
 
       <Grid container item direction="row" justify="center">
         <Button

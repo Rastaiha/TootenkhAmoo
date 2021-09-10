@@ -22,8 +22,8 @@ const ArticleAppBarItems = () => {
   return {
     desktopLeftItems: [logoutButton],
     desktopRightItems: [menuButton, jitsiButton, notificationsButton],
-    mobileLeftItems: [notificationsButton, logoutButton],
-    mobileRightItems: [menuButton, jitsiButton],
+    mobileLeftItems: [logoutButton],
+    mobileRightItems: [menuButton, jitsiButton, notificationsButton],
     mobileMenuListItems: [],
   };
 };
