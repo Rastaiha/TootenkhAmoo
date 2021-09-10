@@ -69,7 +69,7 @@ const InputFields = ({
     <>
       <Grid item>
         <TextField
-          autoComplete="on"
+          autoComplete="off"
           variant='outlined'
           fullWidth
           onChange={(e) => {
@@ -87,7 +87,7 @@ const InputFields = ({
 
       <Grid item>
         <TextField
-          autoComplete="on"
+          autoComplete="off"
           variant='outlined'
           fullWidth
           onChange={putData}

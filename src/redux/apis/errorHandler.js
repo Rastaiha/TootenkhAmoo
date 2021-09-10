@@ -17,6 +17,13 @@ export const errorHandler = (
     });
   }
 
+
+  if (error?.response?.data?.detail) {
+    return rejectWithValue({
+      message: error?.response?.data?.detail,
+    });
+  }
+
   switch (error.response.status) {
     case 401:
       if (error.config.url === 'auth/token/obtain/') {
@@ -24,7 +31,7 @@ export const errorHandler = (
       }
       dispatch({ type: 'account/logout' });
       return rejectWithValue({
-        message: 'لطفا دوباره وارد سامانه شو!',
+        message: 'اکانت  فعالی وجود نداشت!',
       });
     case 404:
       return rejectWithValue({
