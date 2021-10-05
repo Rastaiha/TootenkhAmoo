@@ -20,7 +20,7 @@ import PrivateRoute from './PrivateRoute';
 const Root = () => {
   return (
     <Switch>
-      {/* <PrivateRoute path="/exchange/" component={Exchange} />
+      <PrivateRoute path="/exchange/" component={Exchange} />
       <PrivateRoute path="/baygani/:mode/" component={Baygani} />
       <PrivateRoute path="/baygani/" component={Baygani} />
       <PrivateRoute path="/main_hall/" component={MainHall} />
@@ -33,8 +33,8 @@ const Root = () => {
       <PrivateRoute path="/rahro/" component={Rahro} />
       <PrivateRoute path="/mashahir/" component={Mashahir} />
       <PrivateRoute path="/problem/:problemGroupId/:submitId/:problemId/" component={ProblemView} />
-      <Route path="/login/" component={Login} /> */}
-      <Route path="/" component={TheEnd} />
+      <Route path="/login/" component={Login} />
+      <Route path="/" component={Login} />
       <Route path="*" render={() => <Redirect to={{ pathname: '/' }} />} />
     </Switch>
   );
